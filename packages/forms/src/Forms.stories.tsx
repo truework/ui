@@ -3,11 +3,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Formik, FormikProps, Form } from 'formik';
-
-import { Box } from '../Box';
-import { Button } from '../Button';
-import { Icon } from '../Icon';
-import { H5 } from '../Typography';
+import { Box, Button, Icon, H5 } from '@truework/ui';
 
 import { Input } from './Input';
 import { InputHint } from './InputHint';

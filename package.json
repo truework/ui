@@ -3,11 +3,12 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "lint": "lerna run lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run lint"
+      "pre-commit": "npm run lint"
     }
   },
   "devDependencies": {
