@@ -1,6 +1,6 @@
 {
   "name": "@truework/forms",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -93,7 +93,7 @@
     "styled-components": "4.x || 5.x"
   },
   "dependencies": {
-    "@truework/ui": "^0.2.0",
+    "@truework/ui": "^0.3.0",
     "formik": "^2.1.4",
     "lodash": "^4.17.15",
     "styled-system": "^5.1.5"
