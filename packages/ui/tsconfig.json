@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "noErrorTruncation": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "jsx": "react"
+  }
+}
