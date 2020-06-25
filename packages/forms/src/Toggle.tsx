@@ -1,9 +1,18 @@
-import { Field, FieldProps } from 'formik';
-import styled, { css } from 'styled-components';
 import * as React from 'react';
+import styled from 'styled-components';
+import { Field, FieldProps, FieldConfig } from 'formik';
 import { Icon } from '@truework/ui';
 
-const hidden = `
+export type ToggleProps = {
+  label: string;
+  name: string;
+  checked?: boolean;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
+export type ToggleFieldProps = { name: string } & ToggleProps &
+  Pick<FieldConfig, 'validate'>;
+
+export const hidden = `
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -16,7 +25,7 @@ const hidden = `
   wordwrap: normal;
 `;
 
-const PillButton = styled.div(
+export const PillButton = styled.div(
   ({ theme }) => `
   display: block;
   position: absolute;
@@ -36,8 +45,8 @@ const PillButton = styled.div(
 `
 );
 
-const Pill = styled.div(
-  ({ theme }) => css`
+export const Pill = styled.div(
+  ({ theme }) => `
     position: relative;
     width: 56px;
     height: 32px;
@@ -51,8 +60,8 @@ const Pill = styled.div(
   `
 );
 
-const Target = styled.label(
-  ({ theme }) => css`
+export const Target = styled.label(
+  ({ theme }) => `
     display: flex;
     align-items: center;
     margin-bottom: 0 !important;
@@ -65,8 +74,8 @@ const Target = styled.label(
   `
 );
 
-const Input = styled.input(
-  ({ theme }) => css`
+export const Input = styled.input(
+  ({ theme }) => `
     ${hidden}
 
     &:focus ~ ${Pill} {
@@ -90,42 +99,55 @@ const Input = styled.input(
   `
 );
 
-const Label = styled.span`
+export const Label = styled.span`
   ${hidden}
 `;
 
-export function Toggle({ label, name }: { label: string; name: string }) {
+export function Toggle({
+  label, // for a11y
+  name,
+  checked,
+  ...props
+}: React.PropsWithChildren<ToggleProps>) {
   return (
-    <Field name={name}>
-      {({ field }: FieldProps) => {
-        return (
-          <Target htmlFor={name}>
-            <Input
-              {...field}
-              checked={field.value}
-              id={name}
-              type="checkbox"
-              name={name}
-            />
-            <Pill>
-              <PillButton>
-                <Icon
-                  name="Check"
-                  width="12px"
-                  height="12px"
-                  position="absolute"
-                  top="0"
-                  bottom="0"
-                  left="0"
-                  right="0"
-                  m="auto"
-                />
-              </PillButton>
-            </Pill>
+    <Target htmlFor={name}>
+      <Input
+        id={name}
+        name={name}
+        type="checkbox"
+        checked={checked}
+        {...props}
+      />
 
-            <Label>{label}</Label>
-          </Target>
-        );
+      <Pill>
+        <PillButton>
+          <Icon
+            name="Check"
+            width="12px"
+            height="12px"
+            position="absolute"
+            top="0"
+            bottom="0"
+            left="0"
+            right="0"
+            m="auto"
+            style={{
+              strokeWidth: '2px',
+            }}
+          />
+        </PillButton>
+      </Pill>
+
+      <Label>{label}</Label>
+    </Target>
+  );
+}
+
+export function ToggleField({ label, name, validate }: ToggleFieldProps) {
+  return (
+    <Field name={name} validate={validate}>
+      {({ field }: FieldProps) => {
+        return <Toggle label={label} {...field} checked={Boolean(field.value)} />;
       }}
     </Field>
   );

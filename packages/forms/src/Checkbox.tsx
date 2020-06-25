@@ -1,26 +1,34 @@
 import * as React from 'react';
-import { Field, FieldProps } from 'formik';
-import styled, { css } from 'styled-components';
-import { Box, Icon, H5 } from '@truework/ui';
+import styled from 'styled-components';
+import { get } from 'lodash';
+import { Field, FieldProps, FieldConfig } from 'formik';
+import { Span, H5, Icon } from '@truework/ui';
 
-import useTooltip from './utils/useTooltip';
-import * as breakpoints from './utils/breakpoints';
-import { Info, InfoButton } from './InfoComponents';
+export type CheckboxProps = {
+  name: string;
+  checked?: boolean;
+  hasError?: boolean;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-const StyledIconCheck = styled(Icon)``;
+export type CheckboxFieldProps = { name: string } & CheckboxProps &
+  Pick<FieldConfig, 'validate'>;
 
-const Check = styled.div(
-  ({ theme }) => css`
+const StyledIcon = styled(Icon)``;
+
+const Check = styled.div<{ checked?: boolean }>(
+  ({ theme, checked }) => `
     position: relative;
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    border: 1px solid ${theme.colors.primaryDark};
+    margin-top: 2px;
+    margin-right: 8px;
+    border: 1px solid ${checked ? theme.colors.primaryDark : theme.colors.outline};
     transition-property: background, border-color;
     transition-duration: ${theme.transitionDurations.fast};
     transition-timing-function: ${theme.transitionTimingFunctions.ease};
 
-    ${StyledIconCheck} {
+    ${StyledIcon} {
       display: block;
       position: absolute;
       top: 0;
@@ -32,7 +40,7 @@ const Check = styled.div(
       height: 12px;
       color: white;
       stroke: white;
-      stroke-width: 1px;
+      stroke-width: 2px;
       transition-property: transform;
       transition-duration: ${theme.transitionDurations.fast};
       transition-timing-function: ${theme.transitionTimingFunctions.ease};
@@ -42,7 +50,7 @@ const Check = styled.div(
 );
 
 const Label = styled(H5)(
-  ({ theme }) => css`
+  ({ theme }) => `
     width: calc(100% - 16px);
     transition-property: color;
     transition-duration: ${theme.transitionDurations.fast};
@@ -50,8 +58,8 @@ const Label = styled(H5)(
   `
 );
 
-const Input = styled.input(
-  ({ theme }) => css`
+const Input = styled.input<CheckboxProps>(
+  ({ theme, hasError }) => `
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -70,20 +78,26 @@ const Input = styled.input(
       background: ${theme.colors.primary};
       border-color: ${theme.colors.primaryDark};
 
-      ${StyledIconCheck} {
+      ${StyledIcon} {
         transform: scale(1);
       }
     }
     &:focus ~ ${Label} {
       color: ${theme.colors.primary};
     }
+
+    ${hasError ? `
+      & ~ ${Check} {
+        border-color: ${theme.colors.error} !important;
+      }
+      ` : ``}
   `
 );
 
 const CheckboxButton = styled.label(
-  ({ theme }) => css`
+  ({ theme }) => `
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     margin-bottom: 0 !important;
 
@@ -96,65 +110,60 @@ const CheckboxButton = styled.label(
   `
 );
 
-type CheckboxProps = {
-  label: string;
-  name: string;
-  validate?: (value: any) => string | Promise<any> | undefined;
-  info?: any;
-  showInfoAsTooltip?: boolean;
-};
-
 export function Checkbox({
-  label,
+  children,
+  name,
+  checked,
+  ...props
+}: CheckboxProps) {
+  return (
+    <CheckboxButton htmlFor={name}>
+      <Input
+        id={name}
+        name={name}
+        type="checkbox"
+        checked={checked}
+        {...props}
+      />
+
+      <Check checked={checked}>
+        <StyledIcon name="Check" />
+      </Check>
+
+      <Span display="block" width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
+        {children}
+      </Span>
+    </CheckboxButton>
+  );
+}
+
+export function CheckboxField({
   name,
   validate,
-  info,
-  showInfoAsTooltip,
-}: CheckboxProps) {
-  const { active, toggleActive, tooltipRef, toggleRef } = useTooltip({
-    enabled: Boolean(showInfoAsTooltip && breakpoints.med()),
-  });
-
+  onChange,
+  onBlur,
+  ...rest
+}: CheckboxFieldProps) {
   return (
     <Field name={name} validate={validate}>
       {({ field, form }: FieldProps) => {
+        const hasError = Boolean(get(form, ['errors', name]));
+
         return (
-          <Box>
-            <Box display="flex" justifyContent="space-between" pb="3px">
-              <CheckboxButton htmlFor={name}>
-                <Input
-                  {...field}
-                  checked={field.value}
-                  id={name}
-                  type="checkbox"
-                  name={name}
-                />
-                <Check>
-                  <StyledIconCheck name="Check" />
-                </Check>
-                <Label ml="xs">{label}</Label>
-              </CheckboxButton>
-
-              {showInfoAsTooltip && (
-                <InfoButton
-                  ref={toggleRef}
-                  active={active}
-                  onClick={() => {
-                    toggleActive();
-                  }}
-                />
-              )}
-            </Box>
-
-            {info && (
-              <Info
-                ref={tooltipRef}
-                showInfoAsTooltip={showInfoAsTooltip}
-                active={active}
-                content={info}
-              />
-            )}
-          </Box>
+          <Checkbox
+            {...rest}
+            {...field}
+            checked={Boolean(field.value)}
+            hasError={hasError}
+            onChange={e => {
+              field.onChange(e);
+              if (onChange) onChange(e);
+            }}
+            onBlur={e => {
+              field.onBlur(e);
+              if (onBlur) onBlur(e);
+            }}
+          />
         );
       }}
     </Field>

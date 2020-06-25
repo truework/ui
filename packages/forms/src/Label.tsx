@@ -8,9 +8,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-export type BaseLabelProps = TypographyProps & ColorProps & SpaceProps;
-
-export const BaseLabel = styled.label<BaseLabelProps>`
+export const Label = styled.label<TypographyProps & ColorProps & SpaceProps>`
   display: block;
   position: relative;
   font-weight: 500;
@@ -20,10 +18,10 @@ export const BaseLabel = styled.label<BaseLabelProps>`
   ${space}
 `;
 
-BaseLabel.defaultProps = {
+Label.displayName = 'Label';
+
+Label.defaultProps = {
   fontSize: 1,
   lineHeight: 1,
-  mb: 'xxs',
+  mb: 'xs',
 };
-
-BaseLabel.displayName = 'Label';

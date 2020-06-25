@@ -90,6 +90,7 @@
     "@truework/ui": "^0.3.1",
     "formik": "^2.1.4",
     "lodash": "^4.17.15",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "use-drop": "^0.5.1"
   }
 }

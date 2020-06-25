@@ -1,22 +1,62 @@
 import * as React from 'react';
-import { Field, FieldProps } from 'formik';
+import styled from 'styled-components';
 import { get } from 'lodash';
-import styled, { css } from 'styled-components';
-import { Box, Span, H5 } from '@truework/ui';
+import { Field, FieldProps, FieldConfig } from 'formik';
+import { Span } from '@truework/ui';
 
-import useTooltip from './utils/useTooltip';
-import * as breakpoints from './utils/breakpoints';
+import { Label } from './Label';
 
-import { BaseLabel } from './BaseLabel';
-import { Info, InfoButton } from './InfoComponents';
+export type RadioProps = {
+  hasError?: boolean;
+  name?: string;
+  checked?: boolean;
+  value: string;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-const RadioCheck = styled.div(
-  ({ theme }) => css`
+export type RadioFieldProps = {
+  name: string;
+} & Omit<RadioProps, 'checked' | 'value'> &
+  Pick<FieldConfig, 'validate'>;
+
+export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
+
+const RadioGroup = styled.div<{ hasError: boolean }>(
+  ({ theme, hasError }) => `
+    width: 100%;
+    border: 1px solid ${theme.colors.outline};
+    border-radius: 4px;
+
+    ${RadioButton} {
+      padding: ${theme.space.sm};
+      border-top: 1px solid ${theme.colors.outline};
+
+      &:first-of-type {
+        border-top: 0;
+      }
+    }
+
+    ${hasError
+      ? `
+          border-color: ${theme.colors.error} !important;
+
+          & ${RadioButton} {
+            border-color: ${theme.colors.error} !important;
+          }
+        `
+      : ``}
+  `
+);
+
+const Check = styled.div<{ checked?: boolean }>(
+  ({ theme, checked }) => `
     position: relative;
     width: 16px;
     height: 16px;
     border-radius: 100%;
-    border: 1px solid ${theme.colors.outline};
+    margin-top: 2px;
+    margin-right: 8px;
+    border: 1px solid ${checked ? theme.colors.primaryDark : theme.colors.outline};
+    z-index: 1;
     transition-property: background, border-color;
     transition-duration: ${theme.transitionDurations.fast};
     transition-timing-function: ${theme.transitionTimingFunctions.ease};
@@ -42,16 +82,9 @@ const RadioCheck = styled.div(
   `
 );
 
-const RadioLabel = styled(H5)(
-  ({ theme }) => css`
-    transition-property: color;
-    transition-duration: ${theme.transitionDurations.fast};
-    transition-timing-function: ${theme.transitionTimingFunctions.ease};
-  `
-);
-
-const RadioInput = styled.input(
-  ({ theme }) => css`
+const Input = styled.input(
+  ({ theme }) => `
+    position: relative;
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -62,162 +95,130 @@ const RadioInput = styled.input(
     position: absolute;
     whitespace: nowrap;
     wordwrap: normal;
+    z-index: 1;
 
-    &:focus ~ ${RadioCheck} {
-      border-color: ${theme.colors.primary};
+    &:focus ~ ${Check} {
+      border-color: ${theme.colors.primaryDark};
     }
-    &:checked ~ ${RadioCheck} {
+    &:checked ~ ${Check} {
       background: ${theme.colors.primary};
-      border-color: ${theme.colors.primary};
+      border-color: ${theme.colors.primaryDark};
 
       &::after {
         transform: scale(1);
       }
     }
-    &:focus ~ ${RadioLabel}, &:checked ~ ${RadioLabel} {
-      color: ${theme.colors.primary};
+    &:disabled ~ ${Check} {
+      border-color: ${theme.colors.outline} !important;
+    }
+    &:disabled ~ ${Span} {
+      color: ${theme.colors.secondary};
+    }
+    &:disabled ~ ${Bg} {
+      background-color: ${theme.colors.background};
     }
   `
 );
 
+const Bg = styled.span`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 0;
+`;
+
 const RadioButton = styled.label(
-  ({ theme }) => css`
+  ({ theme }) => `
     display: flex;
     align-items: center;
-    padding: ${theme.space.sm};
-    border: 1px solid ${theme.colors.outline};
-    border-top: 0;
+    position: relative;
     width: 100%;
     margin-bottom: 0 !important;
     cursor: pointer;
+    overflow: hidden;
 
-    &:hover ${RadioCheck} {
-      border-color: ${theme.colors.primary};
-    }
-    &:hover ${RadioLabel} {
-      color: ${theme.colors.primary};
+    &:hover ${Check} {
+      border-color: ${theme.colors.primaryDark};
     }
   `
 );
-
-const RadioGroup = styled.div<{ hasError: boolean }>(
-  ({ theme, hasError }) => css`
-    width: 100%;
-
-    ${RadioButton}:first-child {
-      border-top: 1px solid ${theme.colors.outline};
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-    ${RadioButton}:last-child {
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-    }
-
-    ${hasError
-      ? css`
-          & ${RadioButton} {
-            border-color: ${theme.colors.error} !important;
-          }
-        `
-      : ``}
-  `
-);
-
-type RadioProps = {
-  label: string;
-  name: string;
-  optional?: boolean;
-  validate?: (value: any) => string | Promise<any> | undefined;
-  info?: any;
-  showInfoAsTooltip?: boolean;
-  options: {
-    label: string;
-    value: string;
-  }[];
-};
 
 export function Radio({
-  label,
+  children,
   name,
-  optional,
-  validate,
-  info,
-  showInfoAsTooltip,
-  options,
+  checked,
+  ...props
 }: RadioProps) {
-  const { active, toggleActive, tooltipRef, toggleRef } = useTooltip({
-    enabled: Boolean(showInfoAsTooltip && breakpoints.med()),
-  });
+  const id = name + props.value;
 
+  return (
+    <RadioButton htmlFor={id}>
+      <Input
+        id={id}
+        name={name}
+        type="radio"
+        checked={checked}
+        {...props}
+      />
+
+      <Check checked={checked} />
+
+      <Span display="block" position="relative" zIndex={1} width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
+        {children}
+      </Span>
+
+      <Bg />
+    </RadioButton>
+  );
+}
+
+export function RadioField({
+  children,
+  name,
+  validate,
+  onChange,
+  onBlur,
+  ...rest
+}: React.PropsWithChildren<RadioFieldProps>) {
   return (
     <Field name={name} validate={validate}>
       {({ field, form }: FieldProps) => {
-        const hasError = Boolean(get(form, ['errors', field.name]));
+        const hasError = Boolean(get(form, ['errors', name]));
 
         return (
-          <Box>
-            <Box display="flex" justifyContent="space-between" pb="3px">
-              <BaseLabel // eslint-disable-line jsx-a11y/label-has-for
-                htmlFor={name}
-                pr="med"
-              >
-                {label}
-                {optional && (
-                  <Span
-                    fontSize="1"
-                    lineHeight="1"
-                    fontStyle="italic"
-                    color="placeholder"
-                    ml="xs"
-                    fontWeight="normal"
-                  >
-                    Optional
-                  </Span>
-                )}
-              </BaseLabel>
-
-              {showInfoAsTooltip && (
-                <InfoButton
-                  ref={toggleRef}
-                  active={active}
-                  onClick={() => {
-                    toggleActive();
-                  }}
-                />
-              )}
-            </Box>
-
-            {info && (
-              <Info
-                ref={tooltipRef}
-                showInfoAsTooltip={showInfoAsTooltip}
-                active={active}
-                content={info}
-              />
-            )}
-
-            <RadioGroup hasError={hasError}>
-              {options.map((item) => (
-                <RadioButton key={item.value} htmlFor={item.value}>
-                  <RadioInput
-                    {...field}
-                    id={item.value}
-                    type="radio"
-                    name={field.name}
-                    value={item.value}
-                    checked={Boolean(item.value === field.value)}
-                  />
-                  <RadioCheck />
-                  <RadioLabel ml="xs" aria-label={`${label} - ${item.label}`}>
-                    {item.label}
-                  </RadioLabel>
-                </RadioButton>
-              ))}
-            </RadioGroup>
-          </Box>
+          <RadioGroup hasError={hasError}>
+            {React.Children.toArray(children).map((child: React.ReactElement) => {
+              return React.cloneElement(child, {
+                ...field,
+                ...rest,
+                value: child.props.value,
+                hasError,
+                checked: Boolean(field.value === child.props.value),
+                onChange(e: React.ChangeEvent<HTMLInputElement>) {
+                  field.onChange(e);
+                  if (onChange) onChange(e);
+                },
+                onBlur(e: React.FocusEvent<HTMLInputElement>) {
+                  field.onBlur(e);
+                  if (onBlur) onBlur(e);
+                },
+              });
+            })}
+          </RadioGroup>
         );
       }}
     </Field>
+  );
+}
+
+export function RadioFieldWithLabel(props: RadioFieldWithLabelProps) {
+  return (
+    <>
+      <Label htmlFor={props.name}>{props.label}</Label>
+      <RadioField {...props} />
+    </>
   );
 }
