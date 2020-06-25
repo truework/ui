@@ -1,16 +1,37 @@
-import { Row, Item } from './Grid';
-
-export { theme } from './theme';
-
-export { GlobalStyle } from './GlobalStyle';
+export {
+  Colors,
+  Fonts,
+  Spaces,
+  Shadows,
+  Sizes,
+  Borders,
+  TransitionDurations,
+  TransitionTimingFunctions,
+  colors,
+  fonts,
+  fontSizes,
+  lineHeights,
+  fontWeights,
+  space,
+  breakpoints,
+  radii,
+  shadows,
+  sizes,
+  borders,
+  zIndices,
+  transitionDurations,
+  transitionTimingFunctions,
+  theme,
+} from './theme';
+export { Alert, AlertProps } from './Alert';
 export { Box, BoxProps } from './Box';
-export { Span } from './Span';
-export { Img } from './Img';
-export { Circle } from './Circle';
-export { Container } from './Container';
-export { Gutter } from './Gutter';
-export { P, H1, H2, H3, H4, H5, H6 } from './Typography';
 export { Button, ButtonProps } from './Button';
-export { Alert } from './Alert';
+export { Circle, CircleProps } from './Circle';
+export { Container, ContainerProps } from './Container';
+export { GlobalStyle } from './GlobalStyle';
+export { GridRow, GridItem, GridRowProps, GridItemProps } from './Grid';
+export { Gutter, GutterProps } from './Gutter';
 export { Icon } from './Icon';
-export const Grid = { Row, Item };
+export { Img } from './Img';
+export { Span } from './Span';
+export { P, H1, H2, H3, H4, H5, H6 } from './Typography';

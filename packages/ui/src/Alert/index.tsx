@@ -18,8 +18,7 @@ export type AlertTypes =
   | 'success'
   | 'secondary';
 
-export type SharedAlertProps = {
-  children: React.ReactNode | React.ReactNode[];
+export type AlertProps = {
   appearance: 'primary' | 'secondary';
   type: AlertTypes;
   icon?: AlertTypes | React.ReactElement;
@@ -53,7 +52,7 @@ const AlertRight = styled.div<SpaceProps>(
 
 AlertRight.displayName = 'AlertRight';
 
-const AlertOuter = styled.div<SharedAlertProps>(
+const AlertOuter = styled.div<React.PropsWithChildren<AlertProps>>(
   {
     display: 'flex',
     color: 'body',
@@ -148,7 +147,7 @@ const icons: {
   success: <Icon name="CircleCheckFull" />,
 };
 
-export function Alert(props: SharedAlertProps) {
+export function Alert(props: React.PropsWithChildren<AlertProps>) {
   let I;
 
   if (props.icon) {

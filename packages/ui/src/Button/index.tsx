@@ -21,7 +21,6 @@ import {
 import { theme } from '../theme';
 
 export type ButtonProps = {
-  children: React.ReactNode;
   appearance?: 'primary' | 'secondary' | 'tertiary' | 'error';
   size?: 'small' | 'large' | 'smallSquare' | 'largeSquare';
 } & SpaceProps &
@@ -167,6 +166,6 @@ const size = variant({
   },
 });
 
-const BaseButton = styled.button<ButtonProps>(base, system, appearance, size);
+const BaseButton = styled.button<React.PropsWithChildren<ButtonProps>>(base, system, appearance, size);
 BaseButton.displayName = 'Button';
 export const Button = BaseButton;

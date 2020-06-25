@@ -6,7 +6,7 @@ import { Box } from '../Box';
 export type GutterSizes = 'normal' | 'small';
 
 export type GutterProps = {
-  children: React.ReactNode | React.ReactNode[];
+  className?: string; // from styled-components
   size?: GutterSizes;
   withVertical?: boolean;
   sizeVertical?: GutterSizes;
@@ -26,8 +26,8 @@ export function Gutter({
   sizeVertical,
   px,
   py,
-  className, // from styled-components
-}: GutterProps & { className?: string }) {
+  className,
+}: React.PropsWithChildren<GutterProps>) {
   const gx = gutters[size];
   const gy = withVertical ? gutters[sizeVertical || size] : 0;
 
