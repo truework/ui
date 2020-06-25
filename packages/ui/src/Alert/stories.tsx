@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Box } from '../Box';
 import * as Type from '../Typography';
 import { Alert } from '../Alert';
-import { Row, Item } from '../Grid';
+import { GridRow, GridItem } from '../Grid';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
 
@@ -14,8 +14,8 @@ storiesOf('Alerts', module).add('All', () => (
     <Type.H1 mb="xs">Alerts</Type.H1>
     <Type.P mb="lg">@components/Alert</Type.P>
 
-    <Row gutter="sm">
-      <Item width={[1, 1, 1, 1 / 2]}>
+    <GridRow gutter="sm">
+      <GridItem width={[1, 1, 1, 1 / 2]}>
         <Alert
           appearance="primary"
           type="primary"
@@ -25,28 +25,28 @@ storiesOf('Alerts', module).add('All', () => (
           Verifications for companies like McDonald’s generally take about 1-2
           business days.
         </Alert>
-      </Item>
-      <Item width={[1, 1, 1, 1 / 2]}>
+      </GridItem>
+      <GridItem width={[1, 1, 1, 1 / 2]}>
         <Alert appearance="secondary" type="secondary" mb="sm">
           Verifications for companies like McDonald’s generally take about 1-2
           business days. For longer alerts, the component expands naturually,
           and both left and right-side elements remain aligned.
         </Alert>
-      </Item>
-    </Row>
+      </GridItem>
+    </GridRow>
 
-    <Row gutter="sm">
-      <Item width={[1, 1, 1, 1 / 3]}>
+    <GridRow gutter="sm">
+      <GridItem width={[1, 1, 1, 1 / 3]}>
         <Alert appearance="primary" type="error" mb="sm">
           Opps, this is an error message.
         </Alert>
-      </Item>
-      <Item width={[1, 1, 1, 2 / 3]}>
+      </GridItem>
+      <GridItem width={[1, 1, 1, 2 / 3]}>
         <Alert appearance="primary" type="warning" mb="sm">
           We recommend uploading a form. Otherwise, your request may be delayed.
         </Alert>
-      </Item>
-    </Row>
+      </GridItem>
+    </GridRow>
     <Alert appearance="primary" type="success" mb="sm">
       Great job! This is a success message.
     </Alert>
