@@ -13,7 +13,8 @@ export type GridRowProps = {
 
 export type GridItemProps = {
   className?: string; // for styled-components
-} & WidthProps &
+} & FlexboxProps &
+  WidthProps &
   DisplayProps;
 
 const Context = React.createContext<GridGutterContextType>('0');
@@ -34,8 +35,7 @@ export function convertGutterValuesToPixels(
 export function GridRow({
   children,
   gutter,
-  className,
-  ...flex
+  ...rest
 }: React.PropsWithChildren<GridRowProps>) {
   const theme = React.useContext(ThemeContext);
   const margin = React.useMemo(
@@ -48,7 +48,7 @@ export function GridRow({
   );
 
   return (
-    <Box display="flex" {...flex} mx={margin} className={className}>
+    <Box display="flex" mx={margin} {...rest}>
       <Context.Provider value={padding}>{children}</Context.Provider>
     </Box>
   );
@@ -56,14 +56,12 @@ export function GridRow({
 
 export function GridItem({
   children,
-  width,
-  display,
-  className,
+  ...rest
 }: React.PropsWithChildren<GridItemProps>) {
   return (
     <Context.Consumer>
       {(gutter) => (
-        <Box width={width} px={gutter} display={display} className={className}>
+        <Box px={gutter} {...rest}>
           {children}
         </Box>
       )}
