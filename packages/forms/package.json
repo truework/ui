@@ -88,7 +88,7 @@
   },
   "dependencies": {
     "@truework/ui": "^0.4.1",
-    "formik": "^2.1.4",
+    "formik": "^1.5.8",
     "lodash": "^4.17.15",
     "styled-system": "^5.1.5",
     "use-drop": "^0.5.1"
