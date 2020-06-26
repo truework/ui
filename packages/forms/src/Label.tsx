@@ -8,7 +8,9 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-export const Label = styled.label<TypographyProps & ColorProps & SpaceProps>`
+type LabelProps = TypographyProps & ColorProps & SpaceProps;
+
+export const Label = styled.label<LabelProps>`
   display: block;
   position: relative;
   font-weight: 500;
