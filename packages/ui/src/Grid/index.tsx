@@ -8,14 +8,13 @@ export type GridGutterContextType = string | string[];
 
 export type GridRowProps = {
   gutter?: GridGutterContextType;
-  className?: string; // for styled-components
-} & FlexboxProps;
-
-export type GridItemProps = {
-  className?: string; // for styled-components
 } & FlexboxProps &
+  React.HTMLAttributes<HTMLElement>;
+
+export type GridItemProps = FlexboxProps &
   WidthProps &
-  DisplayProps;
+  DisplayProps &
+  React.HTMLAttributes<HTMLElement>;
 
 const Context = React.createContext<GridGutterContextType>('0');
 

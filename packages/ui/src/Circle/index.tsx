@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ColorProps } from 'styled-system';
 
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 
 export type CircleProps = {
   size?: number;
-} & ColorProps &
+} & BoxProps &
   React.HTMLAttributes<HTMLDivElement>;
 
 export function Circle({

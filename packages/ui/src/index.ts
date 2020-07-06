@@ -32,6 +32,5 @@ export { GlobalStyle } from './GlobalStyle';
 export { GridRow, GridItem, GridRowProps, GridItemProps } from './Grid';
 export { Gutter, GutterProps } from './Gutter';
 export { Icon } from './Icon';
-export { Img } from './Img';
 export { Span } from './Span';
 export { P, H1, H2, H3, H4, H5, H6 } from './Typography';

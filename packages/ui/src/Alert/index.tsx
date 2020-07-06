@@ -21,7 +21,7 @@ export type AlertTypes =
 export type AlertProps = {
   appearance: 'primary' | 'secondary';
   type: AlertTypes;
-  icon?: AlertTypes | React.ReactElement;
+  icon?: React.ReactElement;
 } & VariantArgs &
   SpaceProps;
 
@@ -148,13 +148,7 @@ const icons: {
 };
 
 export function Alert(props: React.PropsWithChildren<AlertProps>) {
-  let I;
-
-  if (props.icon) {
-    I = typeof props.icon === 'string' ? icons[props.icon] : props.icon;
-  } else {
-    I = icons[props.type];
-  }
+  let I = props.icon || icons[props.type];
 
   return (
     <AlertOuter {...props}>

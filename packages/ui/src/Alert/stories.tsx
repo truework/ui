@@ -3,17 +3,13 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Box } from '../Box';
-import * as Type from '../Typography';
 import { Alert } from '../Alert';
 import { GridRow, GridItem } from '../Grid';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
 
 storiesOf('Alerts', module).add('All', () => (
-  <Box p="xxl">
-    <Type.H1 mb="xs">Alerts</Type.H1>
-    <Type.P mb="lg">@components/Alert</Type.P>
-
+  <Box>
     <GridRow gutter="sm">
       <GridItem width={[1, 1, 1, 1 / 2]}>
         <Alert
