@@ -14,6 +14,11 @@ export type CheckboxFieldProps = { name: string } & CheckboxProps &
   Pick<FieldConfig, 'validate'>;
 
 const StyledIcon = styled(Icon)``;
+const StyledSpan = styled(Span)<{checked?: boolean}>(
+  ({theme, checked}) => `
+    color: ${checked ? theme.colors.primary : theme.colors.body};
+  `
+);
 
 const Check = styled.div<{ checked?: boolean }>(
   ({ theme, checked }) => `
@@ -107,6 +112,9 @@ const CheckboxButton = styled.label(
     &:hover ${Label} {
       color: ${theme.colors.primary};
     }
+    &:hover ${StyledSpan} {
+      color: ${theme.colors.primary};
+    }
   `
 );
 
@@ -130,9 +138,9 @@ export function Checkbox({
         <StyledIcon name="Check" />
       </Check>
 
-      <Span display="block" width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
+      <StyledSpan display="block" width="calc(100% - 16px)" checked={checked} fontSize={1} lineHeight={1} fontWeight={5}>
         {children}
-      </Span>
+      </StyledSpan>
     </CheckboxButton>
   );
 }
