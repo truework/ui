@@ -8,12 +8,14 @@ export type CheckboxProps = {
   name: string;
   checked?: boolean;
   hasError?: boolean;
+  disabled?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type CheckboxFieldProps = { name: string } & CheckboxProps &
   Pick<FieldConfig, 'validate'>;
 
 const StyledIcon = styled(Icon)``;
+
 const StyledSpan = styled(Span)<{checked?: boolean}>(
   ({theme, checked}) => `
     color: ${checked ? theme.colors.primary : theme.colors.body};
@@ -99,21 +101,34 @@ const Input = styled.input<CheckboxProps>(
   `
 );
 
-const CheckboxButton = styled.label(
-  ({ theme }) => `
+const CheckboxButton = styled.label<{disabled?: boolean}>(
+  ({ theme, disabled }) => `
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 0 !important;
 
-    &:hover ${Check} {
-      border-color: ${theme.colors.primaryDark};
-    }
-    &:hover ${Label} {
-      color: ${theme.colors.primary};
-    }
-    &:hover ${StyledSpan} {
-      color: ${theme.colors.primary};
+    ${disabled ? `
+      pointer-events: none;
+
+      ${Check} {
+        background: ${theme.colors.background};
+      }
+      ${StyledSpan} {
+        color: ${theme.colors.placeholder};
+      }
+      ` :
+      `
+        &:hover ${Check} {
+          border-color: ${theme.colors.primaryDark};
+        }
+        &:hover ${Label} {
+          color: ${theme.colors.primary};
+        }
+        &:hover ${StyledSpan} {
+          color: ${theme.colors.primary};
+        }
+      `
     }
   `
 );
@@ -122,10 +137,11 @@ export function Checkbox({
   children,
   name,
   checked,
+  disabled,
   ...props
 }: CheckboxProps) {
   return (
-    <CheckboxButton htmlFor={name}>
+    <CheckboxButton htmlFor={name} disabled={disabled}>
       <Input
         id={name}
         name={name}
@@ -138,7 +154,14 @@ export function Checkbox({
         <StyledIcon name="Check" />
       </Check>
 
-      <StyledSpan display="block" width="calc(100% - 16px)" checked={checked} fontSize={1} lineHeight={1} fontWeight={5}>
+      <StyledSpan
+        display="block"
+        width="calc(100% - 16px)"
+        checked={checked}
+        fontSize={1}
+        lineHeight={1}
+        fontWeight={5}
+      >
         {children}
       </StyledSpan>
     </CheckboxButton>

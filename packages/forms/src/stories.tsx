@@ -178,6 +178,11 @@ storiesOf('Base', module).add('Checkbox', () => (
         Checkbox
       </Checkbox>
     </Box>
+    <Box mb="med">
+      <Checkbox name="d" disabled>
+        Checkbox
+      </Checkbox>
+    </Box>
   </Gutter>
 ));
 
