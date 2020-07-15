@@ -133,6 +133,29 @@ const CheckboxButton = styled.label<{disabled?: boolean}>(
   `
 );
 
+export const CheckboxGroup = styled.div(
+  ({ theme }) => `
+    width: 100%;
+
+    ${CheckboxButton} {
+      padding: ${theme.space.sm};
+      border: 1px solid ${theme.colors.outline};
+      border-top: none;
+    }
+
+    ${CheckboxButton}:first-child {
+      border-top: 1px solid ${theme.colors.outline};
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    ${CheckboxButton}:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  `
+);
+
 export function Checkbox({
   children,
   name,
