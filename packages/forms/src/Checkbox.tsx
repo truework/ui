@@ -139,6 +139,8 @@ export const CheckboxGroup = styled.div(
       padding: ${theme.space.sm};
       border: 1px solid ${theme.colors.outline};
       border-top: none;
+      display: flex;
+      align-items: center;
     }
 
     ${CheckboxButton}:first-child {

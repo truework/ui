@@ -317,7 +317,14 @@ storiesOf('Formik', module).add('Basic', () => (
         </Box>
         <Box mb="med">
           <CheckboxGroup>
-            <CheckboxField name="one">Checkbox in CheckboxGroup</CheckboxField>
+            <CheckboxField name="one">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </CheckboxField>
             <CheckboxField name="two">Checkbox in CheckboxGroup</CheckboxField>
             <CheckboxField name="three" disabled>
               Checkbox in CheckboxGroup
