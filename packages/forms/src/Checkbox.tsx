@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import { Field, FieldProps, FieldConfig } from 'formik';
-import { Span, H5, Icon } from '@truework/ui';
+import {Span, H5, Icon} from '@truework/ui';
 
 export type CheckboxProps = {
   name: string;
@@ -15,12 +15,6 @@ export type CheckboxFieldProps = { name: string } & CheckboxProps &
   Pick<FieldConfig, 'validate'>;
 
 const StyledIcon = styled(Icon)``;
-
-const StyledSpan = styled(Span)<{checked?: boolean}>(
-  ({theme, checked}) => `
-    color: ${checked ? theme.colors.primary : theme.colors.body};
-  `
-);
 
 const Check = styled.div<{ checked?: boolean }>(
   ({ theme, checked }) => `
@@ -92,6 +86,12 @@ const Input = styled.input<CheckboxProps>(
     &:focus ~ ${Label} {
       color: ${theme.colors.primary};
     }
+    &:focus ~ ${Span} {
+      color: ${theme.colors.primary};
+    }
+    &:checked ~ ${Span} {
+      color: ${theme.colors.primary};
+    }
 
     ${hasError ? `
       & ~ ${Check} {
@@ -109,12 +109,10 @@ const CheckboxButton = styled.label<{disabled?: boolean}>(
     margin-bottom: 0 !important;
 
     ${disabled ? `
-      pointer-events: none;
-
       ${Check} {
         background: ${theme.colors.background};
       }
-      ${StyledSpan} {
+      ${Span} {
         color: ${theme.colors.placeholder};
       }
       ` :
@@ -125,7 +123,7 @@ const CheckboxButton = styled.label<{disabled?: boolean}>(
         &:hover ${Label} {
           color: ${theme.colors.primary};
         }
-        &:hover ${StyledSpan} {
+        &:hover ${Span} {
           color: ${theme.colors.primary};
         }
       `
@@ -170,6 +168,7 @@ export function Checkbox({
         name={name}
         type="checkbox"
         checked={checked}
+        disabled={disabled}
         {...props}
       />
 
@@ -177,16 +176,20 @@ export function Checkbox({
         <StyledIcon name="Check" />
       </Check>
 
-      <StyledSpan
+      <Span
         display="block"
         width="calc(100% - 16px)"
-        checked={checked}
         fontSize={1}
         lineHeight={1}
         fontWeight={5}
+        style={{
+          transitionProperty: 'color',
+          transitionDuration: '150ms',
+          transitionTimingFunction: 'ease-in-out',
+        }}
       >
         {children}
-      </StyledSpan>
+      </Span>
     </CheckboxButton>
   );
 }
