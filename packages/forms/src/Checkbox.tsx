@@ -8,6 +8,7 @@ export type CheckboxProps = {
   name: string;
   checked?: boolean;
   hasError?: boolean;
+  disabled?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type CheckboxFieldProps = { name: string } & CheckboxProps &
@@ -82,7 +83,7 @@ const Input = styled.input<CheckboxProps>(
         transform: scale(1);
       }
     }
-    &:focus ~ ${Label} {
+    &:focus ~ ${Label}, &:focus ~${Span}, &:checked ~ ${Span} {
       color: ${theme.colors.primary};
     }
 
@@ -94,18 +95,54 @@ const Input = styled.input<CheckboxProps>(
   `
 );
 
-const CheckboxButton = styled.label(
-  ({ theme }) => `
+const CheckboxButton = styled.label<{disabled?: boolean}>(
+  ({ theme, disabled }) => `
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 0 !important;
 
-    &:hover ${Check} {
-      border-color: ${theme.colors.primaryDark};
+    ${disabled ? `
+      ${Check} {
+        background: ${theme.colors.background};
+      }
+      ${Span} {
+        color: ${theme.colors.placeholder};
+      }
+      ` :
+      `
+        &:hover ${Check} {
+          border-color: ${theme.colors.primaryDark};
+        }
+        &:hover ${Label}, &:hover ${Span} {
+          color: ${theme.colors.primary};
+        }
+      `
     }
-    &:hover ${Label} {
-      color: ${theme.colors.primary};
+  `
+);
+
+export const CheckboxGroup = styled.div(
+  ({ theme }) => `
+    width: 100%;
+
+    ${CheckboxButton} {
+      padding: ${theme.space.sm};
+      border: 1px solid ${theme.colors.outline};
+      border-top: none;
+      display: flex;
+      align-items: center;
+    }
+
+    ${CheckboxButton}:first-child {
+      border-top: 1px solid ${theme.colors.outline};
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    ${CheckboxButton}:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   `
 );
@@ -114,15 +151,17 @@ export function Checkbox({
   children,
   name,
   checked,
+  disabled,
   ...props
 }: CheckboxProps) {
   return (
-    <CheckboxButton htmlFor={name}>
+    <CheckboxButton htmlFor={name} disabled={disabled}>
       <Input
         id={name}
         name={name}
         type="checkbox"
         checked={checked}
+        disabled={disabled}
         {...props}
       />
 
@@ -130,7 +169,18 @@ export function Checkbox({
         <StyledIcon name="Check" />
       </Check>
 
-      <Span display="block" width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
+      <Span
+        display="block"
+        width="calc(100% - 16px)"
+        fontSize={1}
+        lineHeight={1}
+        fontWeight={5}
+        style={{
+          transitionProperty: 'color',
+          transitionDuration: '150ms',
+          transitionTimingFunction: 'ease-in-out',
+        }}
+      >
         {children}
       </Span>
     </CheckboxButton>

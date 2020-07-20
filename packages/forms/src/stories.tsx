@@ -9,7 +9,7 @@ import { SubGroup } from './SubGroup';
 import { Input, InputFieldWithLabel } from './Input';
 import { Select, SelectFieldWithLabel } from './Select';
 import { Textarea, TextareaFieldWithLabel } from './Textarea';
-import { Checkbox, CheckboxField } from './Checkbox';
+import { Checkbox, CheckboxField, CheckboxGroup } from './Checkbox';
 import { Radio, RadioFieldWithLabel } from './Radio';
 import { Toggle, ToggleField } from './Toggle';
 import { DateInput, DateInputFieldWithLabel } from './DateInput';
@@ -178,6 +178,20 @@ storiesOf('Base', module).add('Checkbox', () => (
         Checkbox
       </Checkbox>
     </Box>
+    <Box mb="med">
+      <Checkbox name="d" disabled>
+        Checkbox
+      </Checkbox>
+    </Box>
+    <Box mb="med">
+      <CheckboxGroup>
+        <Checkbox name="one">Checkbox in CheckboxGroup</Checkbox>
+        <Checkbox name="two">Checkbox in CheckboxGroup</Checkbox>
+        <Checkbox name="three" disabled>
+          Checkbox in CheckboxGroup
+        </Checkbox>
+      </CheckboxGroup>
+    </Box>
   </Gutter>
 ));
 
@@ -301,6 +315,23 @@ storiesOf('Formik', module).add('Basic', () => (
         <Box mb="med">
           <CheckboxField name="checkbox">Checkbox</CheckboxField>
         </Box>
+        <Box mb="med">
+          <CheckboxGroup>
+            <CheckboxField name="one">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </CheckboxField>
+            <CheckboxField name="two">Checkbox in CheckboxGroup</CheckboxField>
+            <CheckboxField name="three" disabled>
+              Checkbox in CheckboxGroup
+            </CheckboxField>
+          </CheckboxGroup>
+        </Box>
+
         <Box mb="med">
           <RadioFieldWithLabel name="radio" label="Radio">
             <Radio value="foo">Foo</Radio>
