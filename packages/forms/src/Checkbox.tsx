@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import { Field, FieldProps, FieldConfig } from 'formik';
-import {Span, H5, Icon} from '@truework/ui';
+import { Span, H5, Icon } from '@truework/ui';
 
 export type CheckboxProps = {
   name: string;
@@ -83,13 +83,7 @@ const Input = styled.input<CheckboxProps>(
         transform: scale(1);
       }
     }
-    &:focus ~ ${Label} {
-      color: ${theme.colors.primary};
-    }
-    &:focus ~ ${Span} {
-      color: ${theme.colors.primary};
-    }
-    &:checked ~ ${Span} {
+    &:focus ~ ${Label}, &:focus ~${Span}, &:checked ~ ${Span} {
       color: ${theme.colors.primary};
     }
 
@@ -120,10 +114,7 @@ const CheckboxButton = styled.label<{disabled?: boolean}>(
         &:hover ${Check} {
           border-color: ${theme.colors.primaryDark};
         }
-        &:hover ${Label} {
-          color: ${theme.colors.primary};
-        }
-        &:hover ${Span} {
+        &:hover ${Label}, &:hover ${Span} {
           color: ${theme.colors.primary};
         }
       `
