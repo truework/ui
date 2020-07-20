@@ -2,7 +2,7 @@
 
 [Truework's](https://www.truework.com) form elements UI toolkit.
 
-```
+```bash
 npm i @truework/forms --save
 ```
 
