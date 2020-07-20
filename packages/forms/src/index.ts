@@ -3,6 +3,7 @@ export {
   CheckboxFieldProps,
   Checkbox,
   CheckboxField,
+  CheckboxGroup,
 } from './Checkbox';
 export {
   DateValidationOptions,
