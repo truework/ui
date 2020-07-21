@@ -24,6 +24,7 @@ export {
   theme,
 } from './theme';
 export { Alert, AlertProps } from './Alert';
+export { A } from './Anchor';
 export { Box, BoxProps } from './Box';
 export { Button, ButtonProps } from './Button';
 export { Circle, CircleProps } from './Circle';
