@@ -152,8 +152,14 @@ export const breakpoints = ['576px', '768px', '992px', '1200px'];
 export const radii = ['0px', '4px', '6px'];
 
 export const shadows = {
-  light: '0px 2px 4px rgba(0, 0, 0, 0.05)',
-  medium: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+  light:
+    '0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 4px 8px rgba(0, 0, 0, 0.04)',
+  medium:
+    '0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 10px 20px rgba(0, 0, 0, 0.04)',
+  large:
+    '0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.06)',
+  xlarge:
+    '0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04)',
 };
 
 export const sizes = {
