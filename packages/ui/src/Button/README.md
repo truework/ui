@@ -27,7 +27,7 @@ As a `react-router` `Link`:
 ```jsx
 import { Link } from 'react-router';
 
-<Button as={Link} href="/" size="large" appearance="primary">
+<Button as={Link} to="/" size="large" appearance="primary">
   Click Me
 </Button>
 ```
