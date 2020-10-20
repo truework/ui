@@ -19,6 +19,6 @@ jobs:
       - name: Installing dependencies
         run: npm i
       - name: Build
-        run: lerna run build
+        run: npx lerna run build
       - name: Test
-        run: npm run test
+        run: npx lerna run test
