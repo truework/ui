@@ -14,6 +14,16 @@ import { Radio, RadioFieldWithLabel } from './Radio';
 import { Toggle, ToggleField } from './Toggle';
 import { DateInput, DateInputFieldWithLabel } from './DateInput';
 import { Dropdown, DropdownFieldWithLabel } from './Dropdown';
+import { SSNInput, SSNInputFieldWithLabel } from './SSNInput';
+
+storiesOf('Base', module).add('SSN', () => (
+  <Gutter withVertical>
+    <Box mb="med">
+      <Label>Social Security Number</Label>
+      <SSNInput name="ssn" placeholder="Enter your SSN here" />
+    </Box>
+  </Gutter>
+));
 
 storiesOf('Base', module).add('Input', () => (
   <Gutter withVertical>
@@ -281,6 +291,7 @@ storiesOf('Formik', module).add('Basic', () => (
         toggle: '',
         date: '',
         dropdown: '',
+        ssn: '',
       }}
       onSubmit={(values) => console.log(values)}
     >
@@ -294,6 +305,9 @@ storiesOf('Formik', module).add('Basic', () => (
             label="Textarea"
             placeholder="Textarea"
           />
+        </Box>
+        <Box mb="med">
+          <SSNInputFieldWithLabel label="Social Security Number" name="ssn" placeholder="Enter your SSN here" />
         </Box>
         <Box mb="med">
           <SelectFieldWithLabel
