@@ -25,7 +25,7 @@ export const hidden = `
   wordwrap: normal;
 `;
 
-export const PillButton = styled.div(
+const PillButton = styled.div(
   ({ theme }) => `
   display: block;
   position: absolute;
@@ -45,7 +45,7 @@ export const PillButton = styled.div(
 `
 );
 
-export const Pill = styled.div(
+const Pill = styled.div(
   ({ theme }) => `
     position: relative;
     width: 56px;
@@ -60,7 +60,7 @@ export const Pill = styled.div(
   `
 );
 
-export const Target = styled.label(
+const Target = styled.label(
   ({ theme }) => `
     display: flex;
     align-items: center;
@@ -74,7 +74,7 @@ export const Target = styled.label(
   `
 );
 
-export const Input = styled.input(
+const Input = styled.input(
   ({ theme }) => `
     ${hidden}
 
@@ -99,7 +99,7 @@ export const Input = styled.input(
   `
 );
 
-export const Label = styled.span`
+const Label = styled.span`
   ${hidden}
 `;
 
