@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 12
       - name: Installing dependencies
-        run: npm i
+        run: npm i && npx lerna bootstrap
       - name: Build
         run: npx lerna run build
       - name: Test
