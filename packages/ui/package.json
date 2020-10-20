@@ -12,8 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "test": "jest",
-    "lint": "pretty-quick --staged && lint-staged",
-    "postbuild": "npm run test"
+    "lint": "pretty-quick --staged && lint-staged"
   },
   "lint-staged": {
     "*.ts|*.tsx": [
