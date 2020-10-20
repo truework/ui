@@ -24,6 +24,8 @@ export function SSNInput(props: SSNInputProps) {
 
   const onChange = React.useCallback(
     (e) => {
+      e.persist()
+
       const val = clean(e.target.value, '*'); // no formatting
       const prev = clean(raw); // no formatting
 
@@ -39,7 +41,10 @@ export function SSNInput(props: SSNInputProps) {
   );
 
   const resetCursor = React.useCallback((e) => {
+    e.persist()
+
     const len = e.target.value.length;
+
     e.target.setSelectionRange(len, len);
   }, []);
 
@@ -55,7 +60,6 @@ export function SSNInput(props: SSNInputProps) {
       onFocus={resetCursor}
       onKeyUp={resetCursor}
       onKeyDown={resetCursor}
-      onBlur={resetCursor}
       onClick={resetCursor}
     />
   );
