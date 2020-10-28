@@ -46,7 +46,7 @@ storiesOf('Alerts', module).add('All', () => (
     <Alert appearance="primary" type="success" mb="sm">
       Great job! This is a success message.
     </Alert>
-    <Alert appearance="primary" type="error" icon={<Icon name="AlertCircle" />}>
+    <Alert appearance="primary" type="error" icon={<Icon name="AlertCircle" />} mb="sm">
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <p>
           Please help us with your request by answering the required questions.
@@ -56,5 +56,23 @@ storiesOf('Alerts', module).add('All', () => (
         </Button>
       </Box>
     </Alert>
+
+    <GridRow gutter="sm">
+      <GridItem width={[1, 1, 1, 1]}>
+        <Alert
+          appearance="primary"
+          type="primary"
+          mb="sm"
+          icon={<Icon name="FileText" />}
+        >
+          <Box display="flex" alignItems="center" justifyContent="space-between">
+            You have a reverification request.
+            <Button as="a" href="#" appearance="tertiary" size="small">
+              View Reverification
+            </Button>
+          </Box>
+        </Alert>
+      </GridItem>
+    </GridRow>
   </Box>
 ));
