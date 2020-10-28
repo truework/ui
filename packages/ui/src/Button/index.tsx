@@ -71,7 +71,7 @@ const appearance = variant({
     primary: {
       ...sharedAppearance,
       bg: 'primary',
-      color: 'white',
+      color: 'white !important',
       border: '1px solid #353CCC',
       ':hover, :focus, :active': {
         outline: 0,
@@ -83,7 +83,7 @@ const appearance = variant({
     secondary: {
       ...sharedAppearance,
       bg: 'white',
-      color: 'secondary',
+      color: `${theme.colors.secondary} !important`,
       border: 'outline',
       boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.05)',
       ':hover, :focus, :active': {
@@ -96,7 +96,7 @@ const appearance = variant({
     tertiary: {
       ...sharedAppearance,
       bg: 'white',
-      color: 'primary',
+      color: `${theme.colors.primary} !important`,
       border: 'primary',
       ':hover, :focus, :active': {
         outline: 0,
@@ -108,7 +108,7 @@ const appearance = variant({
     error: {
       ...sharedAppearance,
       bg: 'white',
-      color: 'error',
+      color: `${theme.colors.error} !important`,
       border: 'error',
       boxShadow: '0px 2px 4px rgba(236, 56, 110, 0.05)',
       ':hover, :focus, :active': {
