@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, FieldProps } from 'formik';
+import { Field, FieldProps, FieldInputProps } from 'formik';
 import { get } from 'lodash';
 import { clean, mask, format } from 'parse-ssn';
 
@@ -14,13 +14,13 @@ import { Label } from './Label';
 export type SSNProps = {
   onUpdate?(ssn: string): void;
 };
-export type SSNInputProps = InputProps & SSNProps;
+export type SSNInputProps = InputProps & SSNProps & Partial<Pick<FieldInputProps<string>, 'value'>>;
 export type SSNInputFieldProps = InputFieldProps & SSNProps;
 export type SSNInputFieldWithLabelProps = InputFieldWithLabelProps & SSNProps;
 
 export function SSNInput(props: SSNInputProps) {
   const [raw, setRaw] = React.useState('');
-  const [formatted, setFormatted] = React.useState('');
+  const [formatted, setFormatted] = React.useState(format(mask(props.value || '')));
 
   const onChange = React.useCallback(
     (e) => {
