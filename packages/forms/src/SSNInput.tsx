@@ -26,13 +26,20 @@ export function SSNInput(props: SSNInputProps) {
     (e) => {
       e.persist()
 
-      const val = clean(e.target.value, '*'); // no formatting
-      const prev = clean(raw); // no formatting
+      const value = e.target.value
 
+      // if a user types a letter, or the last character is a formatting
+      // character, just ignore
+      if (/[^0-9-*]/.test(value.slice(-1))) return
+
+      const cleanedInputValue = clean(value, '*'); // masked, no - format
+      const rawSSN = clean(raw); // no formatting, just numbers
+
+      // if user deleted a character, remove, otherwise, append
       const next =
-        val.length < prev.length
-          ? prev.slice(0, val.length)
-          : prev + val.slice(-1);
+        cleanedInputValue.length < rawSSN.length
+          ? rawSSN.slice(0, cleanedInputValue.length)
+          : rawSSN + cleanedInputValue.slice(-1);
 
       setRaw(format(next));
       setFormatted(format(mask(next)));
