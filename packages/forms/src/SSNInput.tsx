@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, FieldProps } from 'formik';
+import { Field, FieldProps, FieldInputProps } from 'formik';
 import { get } from 'lodash';
 import { clean, mask, format } from 'parse-ssn';
 
@@ -14,25 +14,32 @@ import { Label } from './Label';
 export type SSNProps = {
   onUpdate?(ssn: string): void;
 };
-export type SSNInputProps = InputProps & SSNProps;
+export type SSNInputProps = InputProps & SSNProps & Partial<Pick<FieldInputProps<string>, 'value'>>;
 export type SSNInputFieldProps = InputFieldProps & SSNProps;
 export type SSNInputFieldWithLabelProps = InputFieldWithLabelProps & SSNProps;
 
 export function SSNInput(props: SSNInputProps) {
   const [raw, setRaw] = React.useState('');
-  const [formatted, setFormatted] = React.useState('');
+  const [formatted, setFormatted] = React.useState(format(mask(props.value || '')));
 
   const onChange = React.useCallback(
     (e) => {
       e.persist()
 
-      const val = clean(e.target.value, '*'); // no formatting
-      const prev = clean(raw); // no formatting
+      const value = e.target.value
 
+      // if a user types a letter, or the last character is a formatting
+      // character, just ignore
+      if (/[^0-9-*]/.test(value.slice(-1))) return
+
+      const cleanedInputValue = clean(value, '*'); // masked, no - format
+      const rawSSN = clean(raw); // no formatting, just numbers
+
+      // if user deleted a character, remove, otherwise, append
       const next =
-        val.length < prev.length
-          ? prev.slice(0, val.length)
-          : prev + val.slice(-1);
+        cleanedInputValue.length < rawSSN.length
+          ? rawSSN.slice(0, cleanedInputValue.length)
+          : rawSSN + cleanedInputValue.slice(-1);
 
       setRaw(format(next));
       setFormatted(format(mask(next)));

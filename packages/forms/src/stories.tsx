@@ -291,7 +291,7 @@ storiesOf('Formik', module).add('Basic', () => (
         toggle: '',
         date: '',
         dropdown: '',
-        ssn: '',
+        ssn: '123-45-1234',
       }}
       onSubmit={(values) => console.log(values)}
     >
