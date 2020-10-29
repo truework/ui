@@ -76,7 +76,7 @@ const appearance = variant({
       ':hover, :focus, :active': {
         outline: 0,
         bg: '#494FCB',
-        color: 'white',
+        color: 'white !important',
         textDecoration: 'none',
       },
     },
@@ -88,7 +88,7 @@ const appearance = variant({
       boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.05)',
       ':hover, :focus, :active': {
         outline: 0,
-        color: 'body',
+        color: `${theme.colors.body} !important`,
         boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
         textDecoration: 'none',
       },
@@ -101,7 +101,7 @@ const appearance = variant({
       ':hover, :focus, :active': {
         outline: 0,
         bg: 'background',
-        color: 'primary',
+        color: `${theme.colors.primary} !important`,
         textDecoration: 'none',
       },
     },
@@ -115,7 +115,7 @@ const appearance = variant({
         outline: 0,
         boxShadow: '0px 2px 4px rgba(236, 56, 110, 0.15)',
         bg: 'background',
-        color: 'error',
+        color: `${theme.colors.error} !important`,
         textDecoration: 'none',
       },
     },

@@ -57,22 +57,18 @@ storiesOf('Alerts', module).add('All', () => (
       </Box>
     </Alert>
 
-    <GridRow gutter="sm">
-      <GridItem width={[1, 1, 1, 1]}>
-        <Alert
-          appearance="primary"
-          type="primary"
-          mb="sm"
-          icon={<Icon name="FileText" />}
-        >
-          <Box display="flex" alignItems="center" justifyContent="space-between">
-            You have a reverification request.
-            <Button as="a" href="#" appearance="tertiary" size="small">
-              View Reverification
-            </Button>
-          </Box>
-        </Alert>
-      </GridItem>
-    </GridRow>
+    <Alert
+      appearance="primary"
+      type="primary"
+      mb="sm"
+      icon={<Icon name="FileText" />}
+    >
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+        You have a reverification request.
+        <Button as="a" href="#" appearance="tertiary" size="small">
+          View Reverification
+        </Button>
+      </Box>
+    </Alert>
   </Box>
 ));
