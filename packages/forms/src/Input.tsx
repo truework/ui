@@ -65,7 +65,6 @@ const InputElement = styled.input<InputProps>(
     }
   }
   &:invalid,
-  &:-moz-ui-invalid,
   &:not(:disabled):active,
   &:not(:disabled):focus,
   &:not(:disabled):hover {

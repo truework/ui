@@ -314,6 +314,9 @@ storiesOf('Formik', module).add('Basic', () => (
             name="select"
             label="Select"
             placeholder="Please select"
+            validate={val => {
+              return !val ? 'Required' : undefined;
+            }}
           >
             {[
               { value: 'one', label: 'One' },
