@@ -89,7 +89,7 @@
     "@truework/ui": "^0.6.1",
     "formik": "^2.1.5",
     "lodash": "^4.17.15",
-    "parse-ssn": "^0.3.1",
+    "parse-ssn": "^0.3.2",
     "styled-system": "^5.1.5",
     "use-drop": "^0.5.1"
   }
