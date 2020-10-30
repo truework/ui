@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "publish": "lerna run build && lerna publish",
+    "release": "lerna run build && lerna publish",
     "lint": "lerna run lint"
   },
   "husky": {
