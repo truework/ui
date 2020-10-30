@@ -20,7 +20,7 @@ storiesOf('Base', module).add('SSN', () => (
   <Gutter withVertical>
     <Box mb="med">
       <Label>Social Security Number</Label>
-      <SSNInput name="ssn" placeholder="Enter your SSN here" />
+      <SSNInput value="123123123" name="ssn" placeholder="Enter your SSN here" />
     </Box>
   </Gutter>
 ));
