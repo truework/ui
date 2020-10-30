@@ -103,7 +103,6 @@ export function SSNInputField({ name, validate, ...rest }: SSNInputFieldProps) {
             {...field}
             hasError={hasError}
             onUpdate={(ssn) => {
-              console.log(ssn)
               form.setFieldValue(name, ssn);
             }}
           />
