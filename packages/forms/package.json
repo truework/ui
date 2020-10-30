@@ -1,6 +1,6 @@
 {
   "name": "@truework/forms",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
