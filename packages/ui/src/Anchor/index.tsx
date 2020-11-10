@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import * as React from 'react';
 
-export const A = styled.a(
+const Anchor = styled.a(
   ({ theme }) => `
     color: ${theme.colors.primary} !important;
     font-weight: ${theme.fontWeights[5]};
@@ -10,3 +11,21 @@ export const A = styled.a(
     }
   `
 );
+
+export function A({
+  children,
+  href,
+  target,
+}: {
+  children: React.ReactChild;
+  href: string;
+  target?: '_blank' | '_parent' | '_self' | '_top';
+}) {
+  const t = target || '_blank';
+
+  return (
+    <Anchor href={href} target={t} rel="noopener noreferrer">
+      {children}
+    </Anchor>
+  );
+}
