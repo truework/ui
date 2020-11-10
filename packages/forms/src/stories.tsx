@@ -10,7 +10,7 @@ import { Input, InputFieldWithLabel } from './Input';
 import { Select, SelectFieldWithLabel } from './Select';
 import { Textarea, TextareaFieldWithLabel } from './Textarea';
 import { Checkbox, CheckboxField, CheckboxGroup } from './Checkbox';
-import { Radio, RadioFieldWithLabel } from './Radio';
+import {Radio, RadioField, RadioFieldWithLabel} from './Radio';
 import { Toggle, ToggleField } from './Toggle';
 import { DateInput, DateInputFieldWithLabel } from './DateInput';
 import { Dropdown, DropdownFieldWithLabel } from './Dropdown';
@@ -208,14 +208,10 @@ storiesOf('Base', module).add('Checkbox', () => (
 storiesOf('Base', module).add('Radio', () => (
   <Gutter withVertical>
     <Box mb="med">
-      <Radio name="a" value="a">
-        Radio
-      </Radio>
+      <Radio name="a" value="a" itemLabel="Radio"/>
     </Box>
     <Box mb="med">
-      <Radio name="b" value="b" checked>
-        Radio
-      </Radio>
+      <Radio name="b" value="b" checked itemLabel="Radio"/>
     </Box>
   </Gutter>
 ));
@@ -350,12 +346,13 @@ storiesOf('Formik', module).add('Basic', () => (
         </Box>
 
         <Box mb="med">
-          <RadioFieldWithLabel name="radio" label="Radio">
-            <Radio value="foo">Foo</Radio>
-            <Radio value="bar">Bar</Radio>
-            <Radio value="baz">Baz</Radio>
+          <RadioFieldWithLabel name="radio" label="Radio" description="This is a description for this group.">
+            <Radio value="foo" itemLabel="Item label for Foo" itemDescription="Item description for Foo."/>
+            <Radio value="bar" itemLabel="Item label for Bar" itemDescription="Item description for Bar."/>
+            <Radio value="baz" itemLabel="Item label for Baz" disabled itemDescription="Item description for Baz."/>
           </RadioFieldWithLabel>
         </Box>
+
         <Box mb="med" display="flex" alignItems="center">
           <ToggleField name="toggle" label="Toggle" />
           <Label mb="0" ml="xs">

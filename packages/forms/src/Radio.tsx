@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import { Field, FieldProps, FieldConfig } from 'formik';
-import { Span } from '@truework/ui';
+import { Box, P } from '@truework/ui';
 
 import { Label } from './Label';
 
@@ -11,14 +11,33 @@ export type RadioProps = {
   name?: string;
   checked?: boolean;
   value: string;
+  itemDescription?: string;
+  itemLabel: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioFieldProps = {
   name: string;
-} & Omit<RadioProps, 'checked' | 'value'> &
+} & Omit<RadioProps, 'checked' | 'value' | 'itemLabel'> &
   Pick<FieldConfig, 'validate'>;
 
-export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
+export type RadioFieldWithLabelProps = {
+  label: string;
+  description?: string;
+} & RadioFieldProps;
+
+const RadioItemLabel = styled.span<{ checked?: boolean; disabled?: boolean }>(
+  ({ theme, checked, disabled }) => `
+  font-size: ${theme.fontSizes[0]};
+  font-weight: ${theme.fontWeights[5]};
+  line-height: ${theme.lineHeights[0]};
+
+  ${
+    disabled
+      ? `color: ${theme.colors.secondary};`
+      : `color: ${checked ? theme.colors.primary : theme.colors.body};`
+  }
+`
+);
 
 const RadioGroup = styled.div<{ hasError: boolean }>(
   ({ theme, hasError }) => `
@@ -111,9 +130,6 @@ const Input = styled.input(
     &:disabled ~ ${Check} {
       border-color: ${theme.colors.outline} !important;
     }
-    &:disabled ~ ${Span} {
-      color: ${theme.colors.secondary};
-    }
     &:disabled ~ ${Bg} {
       background-color: ${theme.colors.background};
     }
@@ -130,8 +146,8 @@ const Bg = styled.span`
   z-index: 0;
 `;
 
-const RadioButton = styled.label(
-  ({ theme }) => `
+const RadioButton = styled.label<{ disabled?: boolean }>(
+  ({ theme, disabled }) => `
     display: flex;
     align-items: center;
     position: relative;
@@ -143,19 +159,31 @@ const RadioButton = styled.label(
     &:hover ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
+    
+    ${disabled
+      ? ``
+      : `
+          &:hover ${RadioItemLabel} {
+            color: ${theme.colors.primary};
+          }
+        `
+    }
   `
 );
+
 
 export function Radio({
   children,
   name,
   checked,
+  itemDescription,
+  itemLabel,
   ...props
 }: RadioProps) {
   const id = name + props.value;
 
   return (
-    <RadioButton htmlFor={id}>
+    <RadioButton htmlFor={id} disabled={props.disabled}>
       <Input
         id={id}
         name={name}
@@ -166,9 +194,14 @@ export function Radio({
 
       <Check checked={checked} />
 
-      <Span display="block" position="relative" zIndex={1} width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
-        {children}
-      </Span>
+      <Box display="block" zIndex={1} width="calc(100% - 32px)">
+        {itemLabel && <RadioItemLabel checked={checked} disabled={props.disabled}>{itemLabel}</RadioItemLabel>}
+        {itemDescription && (
+          <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
+            {itemDescription}
+          </P>
+        )}
+      </Box>
 
       <Bg />
     </RadioButton>
@@ -218,6 +251,11 @@ export function RadioFieldWithLabel(props: RadioFieldWithLabelProps) {
   return (
     <>
       <Label htmlFor={props.name}>{props.label}</Label>
+      {props.description && (
+        <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0} my="xs">
+          {props.description}
+        </P>
+      )}
       <RadioField {...props} />
     </>
   );
