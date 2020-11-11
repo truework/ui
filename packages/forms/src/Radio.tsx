@@ -75,9 +75,6 @@ const Check = styled.div<{ checked?: boolean }>(
     margin-right: 8px;
     border: 1px solid ${checked ? theme.colors.primaryDark : theme.colors.outline};
     z-index: 1;
-    transition-property: background, border-color;
-    transition-duration: ${theme.transitionDurations.fast};
-    transition-timing-function: ${theme.transitionTimingFunctions.ease};
 
     &::after {
       content: '';
@@ -118,6 +115,9 @@ const Input = styled.input(
     &:focus ~ ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
+    &:focus ~ ${Box} ${RadioItemLabel} {
+      color: ${theme.colors.primary};
+    }
     &:checked ~ ${Check} {
       background: ${theme.colors.primary};
       border-color: ${theme.colors.primaryDark};
@@ -157,6 +157,9 @@ const RadioButton = styled.label<{ disabled?: boolean }>(
 
     &:hover ${Check} {
       border-color: ${theme.colors.primaryDark};
+      transition-property: border-color;
+      transition-duration: ${theme.transitionDurations.fast};
+      transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
     
     ${disabled
@@ -164,6 +167,9 @@ const RadioButton = styled.label<{ disabled?: boolean }>(
       : `
           &:hover ${RadioItemLabel} {
             color: ${theme.colors.primary};
+            transition-property: color;
+            transition-duration: ${theme.transitionDurations.fast};
+            transition-timing-function: ${theme.transitionTimingFunctions.ease};
           }
         `
     }
