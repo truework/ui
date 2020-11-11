@@ -11,7 +11,7 @@ export type RadioProps = {
   name?: string;
   checked?: boolean;
   value: string;
-  itemDescription?: string;
+  itemDescription?: React.ReactNode;
   itemLabel: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
