@@ -15,16 +15,17 @@ const Anchor = styled.a(
 export function A({
   children,
   href,
-  target,
+  external,
 }: {
-  children: React.ReactChild;
+  children: React.ReactNode;
   href: string;
-  target?: '_blank' | '_parent' | '_self' | '_top';
+  external?: boolean;
 }) {
-  const t = target || '_blank';
-
   return (
-    <Anchor href={href} target={t} rel="noopener noreferrer">
+    <Anchor
+      href={href}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
       {children}
     </Anchor>
   );

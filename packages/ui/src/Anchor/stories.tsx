@@ -9,6 +9,8 @@ storiesOf('Link', module).add('All', () => (
     <H1 mb="xs">Link</H1>
     <P mb="lg">@components/Link</P>
 
-    <A href="https://truework.com">truework.com</A>
+    <A href="https://truework.com" external>
+      truework.com
+    </A>
   </Box>
 ));
