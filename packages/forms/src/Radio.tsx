@@ -22,7 +22,6 @@ export type RadioFieldProps = {
 
 export type RadioFieldWithLabelProps = {
   label: string;
-  description?: string;
 } & RadioFieldProps;
 
 const RadioItemLabel = styled.span<{ checked?: boolean; disabled?: boolean }>(
@@ -251,11 +250,6 @@ export function RadioFieldWithLabel(props: RadioFieldWithLabelProps) {
   return (
     <>
       <Label htmlFor={props.name}>{props.label}</Label>
-      {props.description && (
-        <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0} my="xs">
-          {props.description}
-        </P>
-      )}
       <RadioField {...props} />
     </>
   );
