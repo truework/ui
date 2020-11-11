@@ -12,7 +12,7 @@ export type RadioProps = {
   checked?: boolean;
   value: string;
   itemDescription?: React.ReactNode;
-  itemLabel: string;
+  itemLabel: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioFieldProps = {

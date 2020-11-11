@@ -347,7 +347,7 @@ storiesOf('Formik', module).add('Basic', () => (
 
         <Box mb="med">
           <RadioFieldWithLabel name="radio" label="Radio">
-            <Radio value="foo" itemLabel="Item label for Foo" itemDescription="Item description for Foo."/>
+            <Radio value="foo" itemLabel={<Span>Item label for Foo</Span>} itemDescription="Item description for Foo."/>
             <Radio value="bar" itemLabel="Item label for Bar" itemDescription="Item description for Bar."/>
             <Radio value="baz" itemLabel="Item label for Baz" disabled itemDescription="Item description for Baz."/>
           </RadioFieldWithLabel>
