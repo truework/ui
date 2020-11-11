@@ -10,7 +10,7 @@ import { Input, InputFieldWithLabel } from './Input';
 import { Select, SelectFieldWithLabel } from './Select';
 import { Textarea, TextareaFieldWithLabel } from './Textarea';
 import { Checkbox, CheckboxField, CheckboxGroup } from './Checkbox';
-import {Radio, RadioField, RadioFieldWithLabel} from './Radio';
+import { Radio, RadioFieldWithLabel } from './Radio';
 import { Toggle, ToggleField } from './Toggle';
 import { DateInput, DateInputFieldWithLabel } from './DateInput';
 import { Dropdown, DropdownFieldWithLabel } from './Dropdown';
@@ -352,7 +352,6 @@ storiesOf('Formik', module).add('Basic', () => (
             <Radio value="baz" itemLabel="Item label for Baz" disabled itemDescription="Item description for Baz."/>
           </RadioFieldWithLabel>
         </Box>
-
         <Box mb="med" display="flex" alignItems="center">
           <ToggleField name="toggle" label="Toggle" />
           <Label mb="0" ml="xs">

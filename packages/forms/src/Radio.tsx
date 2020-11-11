@@ -24,10 +24,10 @@ export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
 
 const RadioItemLabel = styled.span(
   ({ theme }) => `
-  font-size: ${theme.fontSizes[0]};
-  font-weight: ${theme.fontWeights[5]};
-  line-height: ${theme.lineHeights[0]};
-`
+    font-size: ${theme.fontSizes[0]};
+    font-weight: ${theme.fontWeights[5]};
+    line-height: ${theme.lineHeights[0]};
+  `
 );
 
 const RadioGroup = styled.div<{ hasError: boolean }>(
