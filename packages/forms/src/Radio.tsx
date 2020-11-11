@@ -24,9 +24,13 @@ export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
 
 const RadioItemLabel = styled.span(
   ({ theme }) => `
-    font-size: ${theme.fontSizes[0]};
+    font-size: ${theme.fontSizes[1]};
     font-weight: ${theme.fontWeights[5]};
     line-height: ${theme.lineHeights[0]};
+    transition-property: color;
+    transition-duration: ${theme.transitionDurations.fast};
+    transition-timing-function: ${theme.transitionTimingFunctions.ease};
+
   `
 );
 
@@ -67,6 +71,10 @@ const Check = styled.div<{ checked?: boolean }>(
     margin-right: 8px;
     border: 1px solid ${checked ? theme.colors.primaryDark : theme.colors.outline};
     z-index: 1;
+    transition-property: background, border-color;
+    transition-duration: ${theme.transitionDurations.fast};
+    transition-timing-function: ${theme.transitionTimingFunctions.ease};
+
 
     &::after {
       content: '';
@@ -107,7 +115,7 @@ const Input = styled.input(
     &:focus ~ ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
-    &:focus ~ ${Box} {
+    &:focus ~ ${Box} ${RadioItemLabel} {
       color: ${theme.colors.primary};
     }
 
@@ -119,7 +127,7 @@ const Input = styled.input(
         transform: scale(1);
       }
     }
-    &:checked ~ ${Box} {
+    &:checked ~ ${Box} ${RadioItemLabel} {
       color: ${theme.colors.primary};
     }
 
@@ -129,8 +137,8 @@ const Input = styled.input(
     &:disabled ~ ${Bg} {
       background-color: ${theme.colors.background};
     }
-    &:disabled ~ ${Box} {
-      color: ${theme.colors.secondary};
+    &:disabled ~ ${Box} ${RadioItemLabel} {
+      color: ${theme.colors.secondary} !important;
     }
   `
 );
@@ -157,16 +165,10 @@ const RadioButton = styled.label(
 
     &:hover ${Check} {
       border-color: ${theme.colors.primaryDark};
-      transition-property: border-color;
-      transition-duration: ${theme.transitionDurations.fast};
-      transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
 
     &:hover ${RadioItemLabel} {
       color: ${theme.colors.primary};
-      transition-property: color;
-      transition-duration: ${theme.transitionDurations.fast};
-      transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
   `
 );
