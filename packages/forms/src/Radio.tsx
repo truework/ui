@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
 import { Field, FieldProps, FieldConfig } from 'formik';
-import { Span } from '@truework/ui';
+import { Box, P } from '@truework/ui';
 
 import { Label } from './Label';
 
@@ -11,14 +11,27 @@ export type RadioProps = {
   name?: string;
   checked?: boolean;
   value: string;
+  itemDescription?: React.ReactNode;
+  itemLabel: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioFieldProps = {
   name: string;
-} & Omit<RadioProps, 'checked' | 'value'> &
+} & Omit<RadioProps, 'checked' | 'value' | 'itemLabel'> &
   Pick<FieldConfig, 'validate'>;
 
 export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
+
+const RadioItemLabel = styled.span(
+  ({ theme }) => `
+    font-size: ${theme.fontSizes[1]};
+    font-weight: ${theme.fontWeights[5]};
+    line-height: ${theme.lineHeights[0]};
+    transition-property: color;
+    transition-duration: ${theme.transitionDurations.fast};
+    transition-timing-function: ${theme.transitionTimingFunctions.ease};
+  `
+);
 
 const RadioGroup = styled.div<{ hasError: boolean }>(
   ({ theme, hasError }) => `
@@ -100,6 +113,10 @@ const Input = styled.input(
     &:focus ~ ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
+    &:focus ~ ${Box} ${RadioItemLabel} {
+      color: ${theme.colors.primary};
+    }
+
     &:checked ~ ${Check} {
       background: ${theme.colors.primary};
       border-color: ${theme.colors.primaryDark};
@@ -108,14 +125,18 @@ const Input = styled.input(
         transform: scale(1);
       }
     }
+    &:checked ~ ${Box} ${RadioItemLabel} {
+      color: ${theme.colors.primary};
+    }
+
     &:disabled ~ ${Check} {
       border-color: ${theme.colors.outline} !important;
     }
-    &:disabled ~ ${Span} {
-      color: ${theme.colors.secondary};
-    }
     &:disabled ~ ${Bg} {
       background-color: ${theme.colors.background};
+    }
+    &:disabled ~ ${Box} ${RadioItemLabel} {
+      color: ${theme.colors.secondary} !important;
     }
   `
 );
@@ -143,6 +164,9 @@ const RadioButton = styled.label(
     &:hover ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
+    &:hover ${RadioItemLabel} {
+      color: ${theme.colors.primary};
+    }
   `
 );
 
@@ -150,6 +174,8 @@ export function Radio({
   children,
   name,
   checked,
+  itemDescription,
+  itemLabel,
   ...props
 }: RadioProps) {
   const id = name + props.value;
@@ -166,9 +192,19 @@ export function Radio({
 
       <Check checked={checked} />
 
-      <Span display="block" position="relative" zIndex={1} width="calc(100% - 16px)" fontSize={1} lineHeight={1} fontWeight={5}>
-        {children}
-      </Span>
+      <Box
+        display="block"
+        position="relative"
+        zIndex={1}
+        width="calc(100% - 16px)"
+      >
+        {itemLabel && <RadioItemLabel>{itemLabel}</RadioItemLabel>}
+        {itemDescription && (
+          <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
+            {itemDescription}
+          </P>
+        )}
+      </Box>
 
       <Bg />
     </RadioButton>
