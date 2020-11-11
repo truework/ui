@@ -208,10 +208,10 @@ storiesOf('Base', module).add('Checkbox', () => (
 storiesOf('Base', module).add('Radio', () => (
   <Gutter withVertical>
     <Box mb="med">
-      <Radio name="a" value="a" itemLabel="Radio"/>
+      <Radio name="a" value="a" label="Radio"/>
     </Box>
     <Box mb="med">
-      <Radio name="b" value="b" checked itemLabel="Radio"/>
+      <Radio name="b" value="b" checked label="Radio"/>
     </Box>
   </Gutter>
 ));
@@ -347,9 +347,9 @@ storiesOf('Formik', module).add('Basic', () => (
 
         <Box mb="med">
           <RadioFieldWithLabel name="radio" label="Radio">
-            <Radio value="foo" itemLabel="Item label for Foo" itemDescription="Item description for Foo."/>
-            <Radio value="bar" itemLabel="Item label for Bar" itemDescription="Item description for Bar."/>
-            <Radio value="baz" itemLabel="Item label for Baz" disabled itemDescription="Item description for Baz."/>
+            <Radio value="foo" label={<Span>Item label for Foo</Span>} description="Item description for Foo."/>
+            <Radio value="bar" label="Item label for Bar" description="Item description for Bar."/>
+            <Radio value="baz" label="Item label for Baz" disabled description="Item description for Baz."/>
           </RadioFieldWithLabel>
         </Box>
         <Box mb="med" display="flex" alignItems="center">

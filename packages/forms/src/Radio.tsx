@@ -11,13 +11,13 @@ export type RadioProps = {
   name?: string;
   checked?: boolean;
   value: string;
-  itemDescription?: React.ReactNode;
-  itemLabel: string;
+  description?: React.ReactNode;
+  label: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioFieldProps = {
   name: string;
-} & Omit<RadioProps, 'checked' | 'value' | 'itemLabel'> &
+} & Omit<RadioProps, 'checked' | 'value' | 'label'> &
   Pick<FieldConfig, 'validate'>;
 
 export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
@@ -174,8 +174,8 @@ export function Radio({
   children,
   name,
   checked,
-  itemDescription,
-  itemLabel,
+  description,
+  label,
   ...props
 }: RadioProps) {
   const id = name + props.value;
@@ -198,10 +198,10 @@ export function Radio({
         zIndex={1}
         width="calc(100% - 16px)"
       >
-        {itemLabel && <RadioItemLabel>{itemLabel}</RadioItemLabel>}
-        {itemDescription && (
+        {label && <RadioItemLabel>{label}</RadioItemLabel>}
+        {description && (
           <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
-            {itemDescription}
+            {description}
           </P>
         )}
       </Box>
@@ -250,10 +250,13 @@ export function RadioField({
   );
 }
 
-export function RadioFieldWithLabel(props: RadioFieldWithLabelProps) {
+export function RadioFieldWithLabel({
+  label,
+  ...props
+}: RadioFieldWithLabelProps) {
   return (
     <>
-      <Label htmlFor={props.name}>{props.label}</Label>
+      <Label htmlFor={props.name}>{label}</Label>
       <RadioField {...props} />
     </>
   );
