@@ -30,7 +30,6 @@ const RadioItemLabel = styled.span(
     transition-property: color;
     transition-duration: ${theme.transitionDurations.fast};
     transition-timing-function: ${theme.transitionTimingFunctions.ease};
-
   `
 );
 
@@ -74,7 +73,6 @@ const Check = styled.div<{ checked?: boolean }>(
     transition-property: background, border-color;
     transition-duration: ${theme.transitionDurations.fast};
     transition-timing-function: ${theme.transitionTimingFunctions.ease};
-
 
     &::after {
       content: '';
@@ -166,7 +164,6 @@ const RadioButton = styled.label(
     &:hover ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
-
     &:hover ${RadioItemLabel} {
       color: ${theme.colors.primary};
     }
