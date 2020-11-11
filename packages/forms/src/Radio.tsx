@@ -20,21 +20,13 @@ export type RadioFieldProps = {
 } & Omit<RadioProps, 'checked' | 'value' | 'itemLabel'> &
   Pick<FieldConfig, 'validate'>;
 
-export type RadioFieldWithLabelProps = {
-  label: string;
-} & RadioFieldProps;
+export type RadioFieldWithLabelProps = { label: string } & RadioFieldProps;
 
-const RadioItemLabel = styled.span<{ checked?: boolean; disabled?: boolean }>(
-  ({ theme, checked, disabled }) => `
+const RadioItemLabel = styled.span(
+  ({ theme }) => `
   font-size: ${theme.fontSizes[0]};
   font-weight: ${theme.fontWeights[5]};
   line-height: ${theme.lineHeights[0]};
-
-  ${
-    disabled
-      ? `color: ${theme.colors.secondary};`
-      : `color: ${checked ? theme.colors.primary : theme.colors.body};`
-  }
 `
 );
 
@@ -115,9 +107,10 @@ const Input = styled.input(
     &:focus ~ ${Check} {
       border-color: ${theme.colors.primaryDark};
     }
-    &:focus ~ ${Box} ${RadioItemLabel} {
+    &:focus ~ ${Box} {
       color: ${theme.colors.primary};
     }
+
     &:checked ~ ${Check} {
       background: ${theme.colors.primary};
       border-color: ${theme.colors.primaryDark};
@@ -126,11 +119,18 @@ const Input = styled.input(
         transform: scale(1);
       }
     }
+    &:checked ~ ${Box} {
+      color: ${theme.colors.primary};
+    }
+
     &:disabled ~ ${Check} {
       border-color: ${theme.colors.outline} !important;
     }
     &:disabled ~ ${Bg} {
       background-color: ${theme.colors.background};
+    }
+    &:disabled ~ ${Box} {
+      color: ${theme.colors.secondary};
     }
   `
 );
@@ -145,8 +145,8 @@ const Bg = styled.span`
   z-index: 0;
 `;
 
-const RadioButton = styled.label<{ disabled?: boolean }>(
-  ({ theme, disabled }) => `
+const RadioButton = styled.label(
+  ({ theme }) => `
     display: flex;
     align-items: center;
     position: relative;
@@ -161,22 +161,15 @@ const RadioButton = styled.label<{ disabled?: boolean }>(
       transition-duration: ${theme.transitionDurations.fast};
       transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
-    
-    ${
-      disabled
-        ? ``
-        : `
-          &:hover ${RadioItemLabel} {
-            color: ${theme.colors.primary};
-            transition-property: color;
-            transition-duration: ${theme.transitionDurations.fast};
-            transition-timing-function: ${theme.transitionTimingFunctions.ease};
-          }
-        `
+
+    &:hover ${RadioItemLabel} {
+      color: ${theme.colors.primary};
+      transition-property: color;
+      transition-duration: ${theme.transitionDurations.fast};
+      transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
   `
 );
-
 
 export function Radio({
   children,
@@ -189,7 +182,7 @@ export function Radio({
   const id = name + props.value;
 
   return (
-    <RadioButton htmlFor={id} disabled={props.disabled}>
+    <RadioButton htmlFor={id}>
       <Input
         id={id}
         name={name}
@@ -206,11 +199,7 @@ export function Radio({
         zIndex={1}
         width="calc(100% - 16px)"
       >
-        {itemLabel && (
-          <RadioItemLabel checked={checked} disabled={props.disabled}>
-            {itemLabel}
-          </RadioItemLabel>
-        )}
+        {itemLabel && <RadioItemLabel>{itemLabel}</RadioItemLabel>}
         {itemDescription && (
           <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
             {itemDescription}
