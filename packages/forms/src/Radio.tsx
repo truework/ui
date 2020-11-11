@@ -162,9 +162,10 @@ const RadioButton = styled.label<{ disabled?: boolean }>(
       transition-timing-function: ${theme.transitionTimingFunctions.ease};
     }
     
-    ${disabled
-      ? ``
-      : `
+    ${
+      disabled
+        ? ``
+        : `
           &:hover ${RadioItemLabel} {
             color: ${theme.colors.primary};
             transition-property: color;
@@ -199,8 +200,17 @@ export function Radio({
 
       <Check checked={checked} />
 
-      <Box display="block" zIndex={1} width="calc(100% - 32px)">
-        {itemLabel && <RadioItemLabel checked={checked} disabled={props.disabled}>{itemLabel}</RadioItemLabel>}
+      <Box
+        display="block"
+        position="relative"
+        zIndex={1}
+        width="calc(100% - 16px)"
+      >
+        {itemLabel && (
+          <RadioItemLabel checked={checked} disabled={props.disabled}>
+            {itemLabel}
+          </RadioItemLabel>
+        )}
         {itemDescription && (
           <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
             {itemDescription}
