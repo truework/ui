@@ -200,7 +200,7 @@ export function Radio({
       >
         {label && <RadioItemLabel>{label}</RadioItemLabel>}
         {description && (
-          <P color="secondary" fontSize={0} fontWeight={0} lineHeight={0}>
+          <P color="secondary" fontSize={0} fontWeight={4} lineHeight={0}>
             {description}
           </P>
         )}
