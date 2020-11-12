@@ -134,7 +134,7 @@ export const fonts = {
  */
 export const fontSizes = ['12px', '14px', '16px', '18px', '21px', '32px'];
 export const lineHeights = ['16px', '20px', '24px', '24px', '24px', '40px'];
-export const fontWeights = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+export const fontWeights = [100, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 export const space = {
   xxs: '4px',
