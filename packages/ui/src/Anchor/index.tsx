@@ -13,16 +13,19 @@ const Anchor = styled.a(
 );
 
 export function A({
+  as = 'a',
   children,
   href,
   external,
 }: {
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   children: React.ReactNode;
   href: string;
   external?: boolean;
 }) {
   return (
     <Anchor
+      as={as}
       href={href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
