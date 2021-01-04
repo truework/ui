@@ -15,7 +15,7 @@ const gutters = {
   normal: ['med', 'med', 'xl'],
 };
 
-export function Gutter({
+export function Gutter ({
   children,
   size = 'normal',
   withVertical,
@@ -26,13 +26,7 @@ export function Gutter({
   const gy = withVertical ? gutters[sizeVertical || size] : 0;
 
   return (
-    <Box
-      px={gx}
-      py={gy}
-      width="100%"
-      position="static"
-      {...rest}
-    >
+    <Box px={gx} py={gy} width='100%' position='static' {...rest}>
       {children}
     </Box>
   );

@@ -7,13 +7,13 @@ export type ContainerProps = {
   size?: keyof Sizes;
 } & React.HTMLAttributes<HTMLElement>;
 
-export function Container({
+export function Container ({
   children,
   size = 'lg',
   ...rest
 }: React.PropsWithChildren<ContainerProps>) {
   return (
-    <Box mx="auto" maxWidth={size} width="100%" {...rest}>
+    <Box mx='auto' maxWidth={size} width='100%' {...rest}>
       {children}
     </Box>
   );

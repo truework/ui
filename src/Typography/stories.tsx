@@ -9,9 +9,9 @@ import * as Type from './';
 const typeComponents = ['H6', 'H5', 'H4', 'H3', 'H2', 'H1'];
 
 storiesOf('Typography', module).add('All', () => (
-  <Box p="xxl">
-    <Type.H1 mb="lg">Typography</Type.H1>
-    <Box p="sm" bg="background" mb="xxl">
+  <Box p='xxl'>
+    <Type.H1 mb='lg'>Typography</Type.H1>
+    <Box p='sm' bg='background' mb='xxl'>
       <pre
         dangerouslySetInnerHTML={{
           __html: `import {
@@ -27,7 +27,7 @@ storiesOf('Typography', module).add('All', () => (
       />
     </Box>
 
-    <Box mb="xl">
+    <Box mb='xl'>
       <Type.P>(16px/24px) The quick brown fox jumped over the lazy dog.</Type.P>
       <pre
         dangerouslySetInnerHTML={{
@@ -43,7 +43,7 @@ storiesOf('Typography', module).add('All', () => (
       const lineHeight = theme.lineHeights[i];
 
       return (
-        <Box mb="xl">
+        <Box mb='xl'>
           <Heading>
             ({size}/{lineHeight}) The quick brown fox jumped over the lazy dog.
           </Heading>

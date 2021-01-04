@@ -10,9 +10,9 @@ storiesOf('Container', module).add('All', () => (
   <Box>
     {Object.keys(theme.sizes).map((key: keyof Sizes) => {
       return (
-        <Box mb="xxl">
+        <Box mb='xxl'>
           <Container key={key} size={key}>
-            <Box bg="primary" color="white" p="sm">
+            <Box bg='primary' color='white' p='sm'>
               {key}
             </Box>
           </Container>

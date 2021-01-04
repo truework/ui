@@ -10,14 +10,12 @@ import { Container } from '@truework/ui';
 primitive to make layouts easier to reproduce.
 
 ```jsx
-<Container size="sm">
-  {children}
-</Container>
+<Container size='sm'>{children}</Container>
 ```
 
 ### Options
 
-- `size` - *optional* - key of `theme.sizes`, defaults to `lg`
+- `size` - _optional_ - key of `theme.sizes`, defaults to `lg`
 
 ### License
 

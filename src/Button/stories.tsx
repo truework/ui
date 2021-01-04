@@ -41,7 +41,7 @@ stories
         <Box>
           <P>
             Our{' '}
-            <Button color="primary" onClick={() => console.log('Clicking')}>
+            <Button color='primary' onClick={() => console.log('Clicking')}>
               base button
             </Button>{' '}
             can be styled using Styled System
@@ -59,27 +59,27 @@ stories
       <div>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="large"
+            size='large'
           >
             Label
           </Button>
         </Box>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="small"
+            size='small'
           >
             Label
           </Button>
         </Box>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="large"
+            size='large'
             disabled
           >
             Label
@@ -87,9 +87,9 @@ stories
         </Box>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="small"
+            size='small'
             disabled
           >
             Label
@@ -97,20 +97,20 @@ stories
         </Box>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="smallSquare"
+            size='smallSquare'
           >
-            <Icon name="Info" />
+            <Icon name='Info' />
           </Button>
         </Box>
         <Box>
           <Button
-            appearance="primary"
+            appearance='primary'
             onClick={() => console.log('Clicking')}
-            size="largeSquare"
+            size='largeSquare'
           >
-            <Icon name="Info" />
+            <Icon name='Info' />
           </Button>
         </Box>
       </div>
@@ -123,27 +123,27 @@ stories
     <div>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
           disabled
         >
           Label
@@ -151,9 +151,9 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
           disabled
         >
           Label
@@ -161,20 +161,20 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="smallSquare"
+          size='smallSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="secondary"
+          appearance='secondary'
           onClick={() => console.log('Clicking')}
-          size="largeSquare"
+          size='largeSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
     </div>
@@ -183,27 +183,27 @@ stories
     <div>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
           disabled
         >
           Label
@@ -211,9 +211,9 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
           disabled
         >
           Label
@@ -221,20 +221,20 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="smallSquare"
+          size='smallSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="tertiary"
+          appearance='tertiary'
           onClick={() => console.log('Clicking')}
-          size="largeSquare"
+          size='largeSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
     </div>
@@ -243,27 +243,27 @@ stories
     <div>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
         >
           Label
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="large"
+          size='large'
           disabled
         >
           Label
@@ -271,9 +271,9 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
           disabled
         >
           Label
@@ -281,30 +281,30 @@ stories
       </Box>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="smallSquare"
+          size='smallSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
       <Box>
         <Button
-          appearance="error"
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="largeSquare"
+          size='largeSquare'
         >
-          <Icon name="Info" />
+          <Icon name='Info' />
         </Button>
       </Box>
       <Box>
         <Button
-          display="flex"
-          appearance="error"
+          display='flex'
+          appearance='error'
           onClick={() => console.log('Clicking')}
-          size="small"
+          size='small'
         >
-          <Icon name="Download" width="12px" mr="xs" />
+          <Icon name='Download' width='12px' mr='xs' />
           Download
         </Button>
       </Box>
@@ -313,12 +313,12 @@ stories
   .add('ButtonAnchor', () => (
     <div>
       <Box>
-        <Button as="a" href="/">
+        <Button as='a' href='/'>
           Link to Home
         </Button>
       </Box>
       <Box>
-        <Button as="a" href="/" appearance="primary" size="large">
+        <Button as='a' href='/' appearance='primary' size='large'>
           Link to Home
         </Button>
       </Box>

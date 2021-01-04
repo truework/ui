@@ -9,7 +9,7 @@ import { Button } from '@truework/ui';
 As a normal `<button>`:
 
 ```jsx
-<Button size="large" appearance="primary">
+<Button size='large' appearance='primary'>
   Click Me
 </Button>
 ```
@@ -17,7 +17,7 @@ As a normal `<button>`:
 As an anchor `<a>`:
 
 ```jsx
-<Button as="a" href="/" size="large" appearance="primary">
+<Button as='a' href='/' size='large' appearance='primary'>
   Click Me
 </Button>
 ```
@@ -27,15 +27,15 @@ As a `react-router` `Link`:
 ```jsx
 import { Link } from 'react-router';
 
-<Button as={Link} to="/" size="large" appearance="primary">
+<Button as={Link} to='/' size='large' appearance='primary'>
   Click Me
-</Button>
+</Button>;
 ```
 
 ### Options
 
-- `size` - *required* - one of `large`, `small`
-- `appearance` - *required* - one of `primary`, `secondary`, `tertiary`
+- `size` - _required_ - one of `large`, `small`
+- `appearance` - _required_ - one of `primary`, `secondary`, `tertiary`
 - plus, all button props, of course
 
 ### License

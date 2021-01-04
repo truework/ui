@@ -10,17 +10,17 @@ import { Alert } from '@truework/ui';
 import { Icon } from '@truework/ui';
 
 export default () => (
-  <Alert type="success" appearance="primary" icon={<Icon name="Heart" />}>
+  <Alert type='success' appearance='primary' icon={<Icon name='Heart' />}>
     This is a success alert!
   </Alert>
 );
 ```
 
 ### Options
-- `type` - *required* - one of `primary`, `warning`, `error`, `success`, `secondary`
-- `appearance` - *required* - one of `primary`, `secondary`
-- `icon` - *optional* - `React.ReactElement`, otherwise infers from `type`
 
+- `type` - _required_ - one of `primary`, `warning`, `error`, `success`, `secondary`
+- `appearance` - _required_ - one of `primary`, `secondary`
+- `icon` - _optional_ - `React.ReactElement`, otherwise infers from `type`
 
 ### License
 

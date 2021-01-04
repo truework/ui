@@ -10,7 +10,7 @@ import { Box } from '@truework/ui';
 ## Usage
 
 ```jsx
-<Box py="sm" color="secondary">
+<Box py='sm' color='secondary'>
   Boxes all the way down.
 </Box>
 ```
@@ -18,7 +18,6 @@ import { Box } from '@truework/ui';
 ### Options
 
 Refer to the [`styled-system`](https://styled-system.com/api) docs.
-
 
 ### License
 

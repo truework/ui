@@ -18,20 +18,20 @@ export type GridItemProps = FlexboxProps &
 
 const Context = React.createContext<GridGutterContextType>('0');
 
-export function convertGutterValuesToPixels(
+export function convertGutterValuesToPixels (
   theme: DefaultTheme,
   gutter: GridGutterContextType,
   multiplier = 1
 ) {
   // @ts-ignore
-  return [].concat(gutter).map((value) => {
+  return [].concat(gutter).map(value => {
     const inUnits = theme.space[value] ? theme.space[value] : value;
     const [, val, unit] = inUnits.match(/([\d.]+)([^\d]*)/);
     return (parseFloat(val) / 2) * multiplier + unit;
   });
 }
 
-export function GridRow({
+export function GridRow ({
   children,
   gutter,
   ...rest
@@ -47,19 +47,19 @@ export function GridRow({
   );
 
   return (
-    <Box display="flex" mx={margin} {...rest}>
+    <Box display='flex' mx={margin} {...rest}>
       <Context.Provider value={padding}>{children}</Context.Provider>
     </Box>
   );
 }
 
-export function GridItem({
+export function GridItem ({
   children,
   ...rest
 }: React.PropsWithChildren<GridItemProps>) {
   return (
     <Context.Consumer>
-      {(gutter) => (
+      {gutter => (
         <Box px={gutter} {...rest}>
           {children}
         </Box>

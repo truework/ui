@@ -7,7 +7,7 @@ export type CircleProps = {
 } & BoxProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export function Circle({
+export function Circle ({
   children,
   size = 32,
   ...rest
@@ -16,10 +16,10 @@ export function Circle({
     <Box
       width={`${size}px`}
       height={`${size}px`}
-      borderRadius="100%"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      borderRadius='100%'
+      display='flex'
+      alignItems='center'
+      justifyContent='center'
       {...rest}
     >
       {children}

@@ -7,16 +7,16 @@ import { Gutter, GutterProps } from './';
 
 const stories = storiesOf('Gutter', module);
 
-function Demo({
+function Demo ({
   label,
   ...options
 }: {
   label: string;
 } & Partial<GutterProps>) {
   return (
-    <Box mb="lg" border="2px dashed" borderColor="primary">
+    <Box mb='lg' border='2px dashed' borderColor='primary'>
       <Gutter {...options}>
-        <Box p="sm" bg="outline">
+        <Box p='sm' bg='outline'>
           <Gutter>
             <P fontSize={0}>
               <pre style={{ margin: 0 }}>{label}</pre>
@@ -31,20 +31,20 @@ function Demo({
 stories.add(
   'All',
   () => (
-    <Box p="xxl">
-      <H1 mb="xs">Gutter</H1>
-      <P mb="lg">@components/Gutter</P>
+    <Box p='xxl'>
+      <H1 mb='xs'>Gutter</H1>
+      <P mb='lg'>@components/Gutter</P>
 
-      <Demo label="default" />
-      <Demo label="size: small" size="small" />
-      <Demo label="withVertical" withVertical />
-      <Demo label="size: small, withVertical" size="small" withVertical />
+      <Demo label='default' />
+      <Demo label='size: small' size='small' />
+      <Demo label='withVertical' withVertical />
+      <Demo label='size: small, withVertical' size='small' withVertical />
       <Demo
-        label="withVertical, sizeVertical: small"
+        label='withVertical, sizeVertical: small'
         withVertical
-        sizeVertical="small"
+        sizeVertical='small'
       />
-      <Demo label="custom, px: med, py: sm" px="med" py="sm" />
+      <Demo label='custom, px: med, py: sm' px='med' py='sm' />
     </Box>
   ),
   {

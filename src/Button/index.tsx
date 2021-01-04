@@ -166,6 +166,11 @@ const size = variant({
   },
 });
 
-const BaseButton = styled.button<React.PropsWithChildren<ButtonProps>>(base, system, appearance, size);
+const BaseButton = styled.button<React.PropsWithChildren<ButtonProps>>(
+  base,
+  system,
+  appearance,
+  size
+);
 BaseButton.displayName = 'Button';
 export const Button = BaseButton;

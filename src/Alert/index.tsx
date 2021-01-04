@@ -140,20 +140,20 @@ AlertOuter.displayName = 'AlertOuter';
 const icons: {
   [key: string]: React.ReactElement;
 } = {
-  primary: <Icon name="Info" />,
-  secondary: <Icon name="Info" />,
-  error: <Icon name="AlertCircle" />,
-  warning: <Icon name="AlertTriangle" />,
-  success: <Icon name="CircleCheckFull" />,
+  primary: <Icon name='Info' />,
+  secondary: <Icon name='Info' />,
+  error: <Icon name='AlertCircle' />,
+  warning: <Icon name='AlertTriangle' />,
+  success: <Icon name='CircleCheckFull' />,
 };
 
-export function Alert(props: React.PropsWithChildren<AlertProps>) {
+export function Alert (props: React.PropsWithChildren<AlertProps>) {
   let I = props.icon || icons[props.type];
 
   return (
     <AlertOuter {...props}>
       <AlertLeft p={['xs', 'xs', 'sm']}>{I}</AlertLeft>
-      <AlertRight px="sm" py={['xs', 'xs', 'sm']}>
+      <AlertRight px='sm' py={['xs', 'xs', 'sm']}>
         {props.children}
       </AlertRight>
     </AlertOuter>

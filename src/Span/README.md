@@ -13,9 +13,9 @@ import { Span } from '@truework/ui';
 ## Usage
 
 ```jsx
-<Box py="sm">
+<Box py='sm'>
   Lorem ipsum dolor
-  <Span color="primary">sit amet</Span>
+  <Span color='primary'>sit amet</Span>
 </Box>
 ```
 

@@ -8,7 +8,7 @@ import { Circle } from '@truework/ui';
 
 ```jsx
 <Circle>
-  <Icon name="Heart" />
+  <Icon name='Heart' />
 </Circle>
 ```
 

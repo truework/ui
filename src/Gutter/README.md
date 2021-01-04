@@ -12,24 +12,20 @@ primitive to make layouts easier to reproduce.
 By default it adds whitespace on the horizontal axis:
 
 ```jsx
-<Gutter>
-  {children}
-</Gutter>
+<Gutter>{children}</Gutter>
 ```
 
 But you can also apply the same spacing to the vertical axis:
 
 ```jsx
-<Gutter withVertical>
-  {children}
-</Gutter>
+<Gutter withVertical>{children}</Gutter>
 ```
 
 ### Options
 
-- `size` - *optional* - one of `normal`, `small`, defaults to `normal`
-- `withVertical` - *optional* - `boolean`, defaults to `false`
-- `sizeVertical` - *optional* - one of `normal`, `small`, inherits from `size`
+- `size` - _optional_ - one of `normal`, `small`, defaults to `normal`
+- `withVertical` - _optional_ - `boolean`, defaults to `false`
+- `sizeVertical` - _optional_ - one of `normal`, `small`, inherits from `size`
 
 ### License
 

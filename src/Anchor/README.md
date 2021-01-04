@@ -9,7 +9,7 @@ import { A } from '@truework/ui';
 As an anchor `<a>`:
 
 ```jsx
-<A href="/">Click Me</A>
+<A href='/'>Click Me</A>
 ```
 
 As a `react-router` `Link`:
@@ -17,7 +17,7 @@ As a `react-router` `Link`:
 ```jsx
 import { Link } from 'react-router';
 
-<A as={Link} to="/">
+<A as={Link} to='/'>
   Click Me
 </A>;
 ```

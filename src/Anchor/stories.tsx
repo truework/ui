@@ -5,11 +5,11 @@ import { A } from './index';
 import { H1, P } from '../Typography';
 
 storiesOf('Link', module).add('All', () => (
-  <Box p="xxl">
-    <H1 mb="xs">Link</H1>
-    <P mb="lg">@components/Link</P>
+  <Box p='xxl'>
+    <H1 mb='xs'>Link</H1>
+    <P mb='lg'>@components/Link</P>
 
-    <A href="https://truework.com" target="_blank" rel="noopener noreferrer">
+    <A href='https://truework.com' target='_blank' rel='noopener noreferrer'>
       truework.com
     </A>
   </Box>

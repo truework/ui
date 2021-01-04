@@ -7,7 +7,9 @@ import { H1, H2, H3, H4, H5, H6, P } from '@truework/ui';
 ## Usage
 
 ```jsx
-<H1 mb="med" color="primary">Hello world!</H1>
+<H1 mb='med' color='primary'>
+  Hello world!
+</H1>
 ```
 
 ### Options
