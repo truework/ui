@@ -15,10 +15,11 @@
     "format": "prettier-standard ./src/**/* --format",
     "lint": "prettier-standard ./src/**/* --check"
   },
-  "lint-staged": {
-    "*.ts|*.tsx": [
-      "eslint --fix"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier-standard --lint --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
   "jest": {
     "verbose": true,
@@ -58,7 +59,9 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^5.0.1",
     "@types/styled-system": "^5.1.1",
+    "commitizen": "^4.2.2",
     "core-js": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.2.3",
     "jest": "^24.5.0",
     "microbundle": "^0.11.0",
@@ -66,6 +69,7 @@
     "prettier-standard": "^16.4.1",
     "react": ">=16.8",
     "react-dom": ">=16.8",
+    "semantic-release": "^17.3.1",
     "styled-components": "^5.0.0",
     "ts-jest": "^24.0.0"
   },
