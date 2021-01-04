@@ -1,18 +1,87 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "@truework/ui",
+  "version": "0.6.2",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "release": "lerna run build && lerna publish",
-    "lint": "lerna run lint"
+    "watch": "microbundle watch --jsx react -f es,cjs",
+    "build": "microbundle --jsx react -f es,cjs",
+    "storybook": "start-storybook -p 6006",
+    "build:storybook": "build-storybook",
+    "test": "jest",
+    "format": "prettier-standard ./src/**/*",
+    "lint": "prettier-standard ./src/**/* --check"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run format && npm run lint",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "modulePaths": [
+      "src"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
+  },
+  "author": "truework",
+  "license": "MIT",
+  "homepage": "https://www.truework.com",
   "devDependencies": {
-    "husky": "^4.2.5",
-    "lerna": "^3.20.2"
+    "@babel/core": "^7.4.0",
+    "@storybook/addon-actions": "^5.0.5",
+    "@storybook/addon-knobs": "^5.0.5",
+    "@storybook/addon-links": "^5.0.5",
+    "@storybook/addon-storysource": "^5.0.5",
+    "@storybook/addons": "^5.0.5",
+    "@storybook/react": "^5.0.5",
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.149",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__addon-links": "^3.3.4",
+    "@types/storybook__react": "^4.0.1",
+    "@types/styled-components": "^5.0.1",
+    "@types/styled-system": "^5.1.1",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "commitizen": "^4.2.2",
+    "core-js": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.2.3",
+    "jest": "^24.5.0",
+    "microbundle": "^0.11.0",
+    "prettier": "^2.0.2",
+    "prettier-standard": "^16.4.1",
+    "react": ">=16.8",
+    "react-dom": ">=16.8",
+    "semantic-release": "^17.3.1",
+    "styled-components": "^5.0.0",
+    "ts-jest": "^24.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "styled-components": "4.x || 5.x"
+  },
+  "dependencies": {
+    "polished": "^3.1.0",
+    "react-feather": "^2.0.4",
+    "styled-system": "^5.1.2"
   }
 }
