@@ -1,7 +1,7 @@
 # Circle
 
 ```js
-import { Circle } from '@truework/ui';
+import { Circle } from '@truework/ui'
 ```
 
 ## Usage

@@ -1,7 +1,7 @@
 # Button
 
 ```js
-import { Button } from '@truework/ui';
+import { Button } from '@truework/ui'
 ```
 
 ## Usage
@@ -25,11 +25,10 @@ As an anchor `<a>`:
 As a `react-router` `Link`:
 
 ```jsx
-import { Link } from 'react-router';
-
-<Button as={Link} to='/' size='large' appearance='primary'>
+import { Link } from 'react-router'
+;<Button as={Link} to='/' size='large' appearance='primary'>
   Click Me
-</Button>;
+</Button>
 ```
 
 ### Options

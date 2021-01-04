@@ -1,7 +1,7 @@
 # theme
 
 ```js
-import { theme } from '@truework/ui';
+import { theme } from '@truework/ui'
 ```
 
 ## Usage
@@ -15,9 +15,11 @@ theme is strictly typed and conforms to
 time, you'll only interact with it when extending one of the primitives:
 
 ```jsx
-const StyledBox = styled(Box)(({ theme }) => `
+const StyledBox = styled(Box)(
+  ({ theme }) => `
   color: ${theme.colors.primary};
-`);
+`
+)
 ```
 
 In order to understand the theme and its shape, you should refer to the

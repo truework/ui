@@ -1,7 +1,7 @@
 # GlobalStyle
 
 ```js
-import { GlobalStyle } from '@truework/ui';
+import { GlobalStyle } from '@truework/ui'
 ```
 
 ## Usage
@@ -9,14 +9,14 @@ import { GlobalStyle } from '@truework/ui';
 Provides base styles and a simple CSS reset based on the `theme`.
 
 ```jsx
-import { theme, GlobalStyle } from '@truework/ui';
+import { theme, GlobalStyle } from '@truework/ui'
 
 export default () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     {children}
   </ThemeProvider>
-);
+)
 ```
 
 ### License

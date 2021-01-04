@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styled, { CSSObject } from 'styled-components';
+import * as React from 'react'
+import styled, { CSSObject } from 'styled-components'
 import {
   compose,
   variant,
@@ -15,21 +15,21 @@ import {
   ColorProps,
   VariantArgs,
   border,
-  BorderProps,
-} from 'styled-system';
+  BorderProps
+} from 'styled-system'
 
-import { theme } from '../theme';
+import { theme } from '../theme'
 
 export type ButtonProps = {
-  appearance?: 'primary' | 'secondary' | 'tertiary' | 'error';
-  size?: 'small' | 'large' | 'smallSquare' | 'largeSquare';
+  appearance?: 'primary' | 'secondary' | 'tertiary' | 'error'
+  size?: 'small' | 'large' | 'smallSquare' | 'largeSquare'
 } & SpaceProps &
   LayoutProps &
   PositionProps &
   TextAlignProps &
   ColorProps &
   BorderProps &
-  VariantArgs;
+  VariantArgs
 
 const base: CSSObject = {
   display: 'inline-block',
@@ -50,20 +50,20 @@ const base: CSSObject = {
   ':hover, :focus, :active': {
     outline: 0,
     color: theme.colors.primary,
-    textDecoration: 'none',
+    textDecoration: 'none'
   },
   ':disabled': {
     pointerEvents: 'none',
-    opacity: 0.6,
-  },
-};
+    opacity: 0.6
+  }
+}
 
-const system = compose(space, layout, position, textAlign, color, border);
+const system = compose(space, layout, position, textAlign, color, border)
 
 const sharedAppearance = {
   borderRadius: '4px',
-  boxShadow: '0 2px 4px 0 rgba(46, 50, 128, 0.05)',
-};
+  boxShadow: '0 2px 4px 0 rgba(46, 50, 128, 0.05)'
+}
 
 const appearance = variant({
   prop: 'appearance',
@@ -77,8 +77,8 @@ const appearance = variant({
         outline: 0,
         bg: '#494FCB',
         color: 'white !important',
-        textDecoration: 'none',
-      },
+        textDecoration: 'none'
+      }
     },
     secondary: {
       ...sharedAppearance,
@@ -90,8 +90,8 @@ const appearance = variant({
         outline: 0,
         color: `${theme.colors.body} !important`,
         boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
-        textDecoration: 'none',
-      },
+        textDecoration: 'none'
+      }
     },
     tertiary: {
       ...sharedAppearance,
@@ -102,8 +102,8 @@ const appearance = variant({
         outline: 0,
         bg: 'background',
         color: `${theme.colors.primary} !important`,
-        textDecoration: 'none',
-      },
+        textDecoration: 'none'
+      }
     },
     error: {
       ...sharedAppearance,
@@ -116,11 +116,11 @@ const appearance = variant({
         boxShadow: '0px 2px 4px rgba(236, 56, 110, 0.15)',
         bg: 'background',
         color: `${theme.colors.error} !important`,
-        textDecoration: 'none',
-      },
-    },
-  },
-});
+        textDecoration: 'none'
+      }
+    }
+  }
+})
 
 const size = variant({
   prop: 'size',
@@ -132,7 +132,7 @@ const size = variant({
       paddingTop: 'xs',
       paddingBottom: 'xs',
       paddingLeft: 'sm',
-      paddingRight: 'sm',
+      paddingRight: 'sm'
     },
     large: {
       fontWeight: 'bold',
@@ -141,7 +141,7 @@ const size = variant({
       paddingTop: 'sm',
       paddingBottom: 'sm',
       paddingLeft: 'med',
-      paddingRight: 'med',
+      paddingRight: 'med'
     },
     smallSquare: {
       fontWeight: 500,
@@ -151,7 +151,7 @@ const size = variant({
       paddingBottom: 'xs',
       paddingLeft: 'xs',
       paddingRight: 'xs',
-      minWidth: '32px',
+      minWidth: '32px'
     },
     largeSquare: {
       fontWeight: 500,
@@ -161,16 +161,16 @@ const size = variant({
       paddingBottom: 'sm',
       paddingLeft: 'sm',
       paddingRight: 'sm',
-      minWidth: '50px',
-    },
-  },
-});
+      minWidth: '50px'
+    }
+  }
+})
 
 const BaseButton = styled.button<React.PropsWithChildren<ButtonProps>>(
   base,
   system,
   appearance,
   size
-);
-BaseButton.displayName = 'Button';
-export const Button = BaseButton;
+)
+BaseButton.displayName = 'Button'
+export const Button = BaseButton

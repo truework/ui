@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { ThemeContext, DefaultTheme } from 'styled-components';
-import { WidthProps, FlexboxProps, DisplayProps } from 'styled-system';
+import * as React from 'react'
+import { ThemeContext, DefaultTheme } from 'styled-components'
+import { WidthProps, FlexboxProps, DisplayProps } from 'styled-system'
 
-import { Box } from '../Box';
+import { Box } from '../Box'
 
-export type GridGutterContextType = string | string[];
+export type GridGutterContextType = string | string[]
 
 export type GridRowProps = {
-  gutter?: GridGutterContextType;
+  gutter?: GridGutterContextType
 } & FlexboxProps &
-  React.HTMLAttributes<HTMLElement>;
+  React.HTMLAttributes<HTMLElement>
 
 export type GridItemProps = FlexboxProps &
   WidthProps &
   DisplayProps &
-  React.HTMLAttributes<HTMLElement>;
+  React.HTMLAttributes<HTMLElement>
 
-const Context = React.createContext<GridGutterContextType>('0');
+const Context = React.createContext<GridGutterContextType>('0')
 
 export function convertGutterValuesToPixels (
   theme: DefaultTheme,
@@ -25,10 +25,10 @@ export function convertGutterValuesToPixels (
 ) {
   // @ts-ignore
   return [].concat(gutter).map(value => {
-    const inUnits = theme.space[value] ? theme.space[value] : value;
-    const [, val, unit] = inUnits.match(/([\d.]+)([^\d]*)/);
-    return (parseFloat(val) / 2) * multiplier + unit;
-  });
+    const inUnits = theme.space[value] ? theme.space[value] : value
+    const [, val, unit] = inUnits.match(/([\d.]+)([^\d]*)/)
+    return (parseFloat(val) / 2) * multiplier + unit
+  })
 }
 
 export function GridRow ({
@@ -36,21 +36,21 @@ export function GridRow ({
   gutter,
   ...rest
 }: React.PropsWithChildren<GridRowProps>) {
-  const theme = React.useContext(ThemeContext);
+  const theme = React.useContext(ThemeContext)
   const margin = React.useMemo(
     () => (gutter ? convertGutterValuesToPixels(theme, gutter, -1) : ''),
     [gutter]
-  );
+  )
   const padding = React.useMemo(
     () => (gutter ? convertGutterValuesToPixels(theme, gutter) : ''),
     [gutter]
-  );
+  )
 
   return (
     <Box display='flex' mx={margin} {...rest}>
       <Context.Provider value={padding}>{children}</Context.Provider>
     </Box>
-  );
+  )
 }
 
 export function GridItem ({
@@ -65,9 +65,9 @@ export function GridItem ({
         </Box>
       )}
     </Context.Consumer>
-  );
+  )
 }
 
 GridItem.defaultProps = {
-  width: '100%',
-};
+  width: '100%'
+}

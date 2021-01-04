@@ -1,22 +1,22 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { Box } from '../Box';
-import { H1, H6 } from '../Typography';
+import { Box } from '../Box'
+import { H1, H6 } from '../Typography'
 
-import { Icon } from './';
+import { Icon } from './'
 
 function Row ({
-  children,
+  children
 }: {
-  children: React.ReactChild | React.ReactChild[];
+  children: React.ReactChild | React.ReactChild[]
 }) {
   return (
     <Box display='flex' flexWrap='wrap' width='100%' mx='-0.5em'>
       {children}
     </Box>
-  );
+  )
 }
 
 function RowItem ({ name, children }: any) {
@@ -31,7 +31,7 @@ function RowItem ({ name, children }: any) {
         </H6>
       </Box>
     </Box>
-  );
+  )
 }
 
 storiesOf('Icons', module).add('All', () => (
@@ -178,4 +178,4 @@ storiesOf('Icons', module).add('All', () => (
       </RowItem>
     </Row>
   </Box>
-));
+))

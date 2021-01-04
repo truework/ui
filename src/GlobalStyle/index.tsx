@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 // same as src/pages/index.html
 export const GlobalStyle = createGlobalStyle(
@@ -51,4 +51,4 @@ export const GlobalStyle = createGlobalStyle(
     text-decoration: none;
   }
 `
-);
+)

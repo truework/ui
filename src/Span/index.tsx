@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import {
   compose,
   color,
@@ -16,8 +16,8 @@ import {
   SpaceProps,
   LayoutProps,
   PositionProps,
-  FlexboxProps,
-} from 'styled-system';
+  FlexboxProps
+} from 'styled-system'
 
 export type SpanProps = ColorProps &
   BorderProps &
@@ -26,14 +26,14 @@ export type SpanProps = ColorProps &
   SpaceProps &
   LayoutProps &
   PositionProps &
-  FlexboxProps;
+  FlexboxProps
 
 export const Span = styled.span<SpanProps>(
   {
     display: 'inline-block',
-    position: 'relative',
+    position: 'relative'
   },
   compose(color, border, shadow, typography, space, layout, position, flexbox)
-);
+)
 
-Span.displayName = 'Span';
+Span.displayName = 'Span'

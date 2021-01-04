@@ -1,19 +1,19 @@
 # Alert
 
 ```js
-import { Alert } from '@truework/ui';
+import { Alert } from '@truework/ui'
 ```
 
 ## Usage
 
 ```jsx
-import { Icon } from '@truework/ui';
+import { Icon } from '@truework/ui'
 
 export default () => (
   <Alert type='success' appearance='primary' icon={<Icon name='Heart' />}>
     This is a success alert!
   </Alert>
-);
+)
 ```
 
 ### Options

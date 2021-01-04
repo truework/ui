@@ -1,7 +1,7 @@
 # Gutter
 
 ```js
-import { Gutter } from '@truework/ui';
+import { Gutter } from '@truework/ui'
 ```
 
 ## Usage

@@ -1,10 +1,10 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { Box } from '../Box';
-import { Container } from '../Container';
-import { theme, Sizes } from '../theme';
+import { Box } from '../Box'
+import { Container } from '../Container'
+import { theme, Sizes } from '../theme'
 
 storiesOf('Container', module).add('All', () => (
   <Box>
@@ -17,7 +17,7 @@ storiesOf('Container', module).add('All', () => (
             </Box>
           </Container>
         </Box>
-      );
+      )
     })}
   </Box>
-));
+))

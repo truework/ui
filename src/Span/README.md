@@ -7,7 +7,7 @@ In contrast to `Box`, `Span` should be used for `inline` contexts, much like a
 native `<span>`.
 
 ```js
-import { Span } from '@truework/ui';
+import { Span } from '@truework/ui'
 ```
 
 ## Usage

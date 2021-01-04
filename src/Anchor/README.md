@@ -1,7 +1,7 @@
 # Anchor
 
 ```js
-import { A } from '@truework/ui';
+import { A } from '@truework/ui'
 ```
 
 ## Usage
@@ -15,11 +15,10 @@ As an anchor `<a>`:
 As a `react-router` `Link`:
 
 ```jsx
-import { Link } from 'react-router';
-
-<A as={Link} to='/'>
+import { Link } from 'react-router'
+;<A as={Link} to='/'>
   Click Me
-</A>;
+</A>
 ```
 
 ### License

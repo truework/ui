@@ -1,9 +1,9 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { Box } from '../Box';
-import { GridRow, GridItem } from './';
+import { Box } from '../Box'
+import { GridRow, GridItem } from './'
 
 storiesOf('Grid', module).add('All', () => (
   <Box p='xxl'>
@@ -37,4 +37,4 @@ storiesOf('Grid', module).add('All', () => (
       </GridItem>
     </GridRow>
   </Box>
-));
+))

@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { Box } from '../Box';
-import { A } from './index';
-import { H1, P } from '../Typography';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
+import { Box } from '../Box'
+import { A } from './index'
+import { H1, P } from '../Typography'
 
 storiesOf('Link', module).add('All', () => (
   <Box p='xxl'>
@@ -13,4 +13,4 @@ storiesOf('Link', module).add('All', () => (
       truework.com
     </A>
   </Box>
-));
+))

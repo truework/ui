@@ -1,7 +1,7 @@
 # Container
 
 ```js
-import { Container } from '@truework/ui';
+import { Container } from '@truework/ui'
 ```
 
 ## Usage

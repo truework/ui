@@ -1,10 +1,10 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { GridRow, GridItem } from '../Grid';
-import { Icon } from '../Icon';
-import { Circle } from '../Circle';
+import { GridRow, GridItem } from '../Grid'
+import { Icon } from '../Icon'
+import { Circle } from '../Circle'
 
 storiesOf('Circles', module).add('All', () => (
   <GridRow gutter='sm'>
@@ -19,4 +19,4 @@ storiesOf('Circles', module).add('All', () => (
       </Circle>
     </GridItem>
   </GridRow>
-));
+))

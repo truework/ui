@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import {
   compose,
   system,
@@ -24,15 +24,15 @@ import {
   BackgroundProps,
   OverflowProps,
   OpacityProps,
-  TypographyProps,
-} from 'styled-system';
+  TypographyProps
+} from 'styled-system'
 
 type SystemProps = {
-  transform?: string;
-  transitionProperty?: string;
-  transitionDuration?: string;
-  transitionTimingFunction?: string;
-};
+  transform?: string
+  transitionProperty?: string
+  transitionDuration?: string
+  transitionTimingFunction?: string
+}
 
 export type BoxProps = SpaceProps &
   SpaceProps &
@@ -47,11 +47,11 @@ export type BoxProps = SpaceProps &
   SystemProps &
   OverflowProps &
   OpacityProps &
-  TypographyProps;
+  TypographyProps
 
 export const Box = styled.div<BoxProps>(
   {
-    position: 'relative',
+    position: 'relative'
   },
   compose(
     space,
@@ -70,14 +70,14 @@ export const Box = styled.div<BoxProps>(
       transitionProperty: true,
       transitionDuration: {
         property: 'transitionDuration',
-        scale: 'transitionDurations',
+        scale: 'transitionDurations'
       },
       transitionTimingFunction: {
         property: 'transitionTimingFunction',
-        scale: 'transitionTimingFunctions',
-      },
+        scale: 'transitionTimingFunctions'
+      }
     })
   )
-);
+)
 
-Box.displayName = 'Box';
+Box.displayName = 'Box'

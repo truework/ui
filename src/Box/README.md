@@ -4,7 +4,7 @@ The lowest level building block in the system, `Box` enables essentially all
 [`styled-system`](https://styled-system.com/api) attributes.
 
 ```js
-import { Box } from '@truework/ui';
+import { Box } from '@truework/ui'
 ```
 
 ## Usage

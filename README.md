@@ -2,8 +2,8 @@
 
 The core UI toolkit at Truework.
 
-
 ## Getting started
+
 ```
 npm i @truework/ui --save
 ```
@@ -11,14 +11,14 @@ npm i @truework/ui --save
 ## Usage
 
 ```jsx
-import { ThemeProvider } from 'styled-components';
-import { theme, Box, H1, Icon } from '@truework/ui';
+import { ThemeProvider } from 'styled-components'
+import { theme, Box, H1, Icon } from '@truework/ui'
 
 export default () => (
   <ThemeProvider theme={theme}>
-    <Box py="sm">
+    <Box py='sm'>
       <H1>Hello world!</H1>
-      <Icon name="Heart" />
+      <Icon name='Heart' />
     </Box>
   </ThemeProvider>
 )

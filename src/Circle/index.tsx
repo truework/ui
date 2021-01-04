@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Box, BoxProps } from '../Box';
+import { Box, BoxProps } from '../Box'
 
 export type CircleProps = {
-  size?: number;
+  size?: number
 } & BoxProps &
-  React.HTMLAttributes<HTMLDivElement>;
+  React.HTMLAttributes<HTMLDivElement>
 
 export function Circle ({
   children,
@@ -24,5 +24,5 @@ export function Circle ({
     >
       {children}
     </Box>
-  );
+  )
 }

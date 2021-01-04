@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Sizes } from '../theme';
-import { Box } from '../Box';
+import { Sizes } from '../theme'
+import { Box } from '../Box'
 
 export type ContainerProps = {
-  size?: keyof Sizes;
-} & React.HTMLAttributes<HTMLElement>;
+  size?: keyof Sizes
+} & React.HTMLAttributes<HTMLElement>
 
 export function Container ({
   children,
@@ -16,5 +16,5 @@ export function Container ({
     <Box mx='auto' maxWidth={size} width='100%' {...rest}>
       {children}
     </Box>
-  );
+  )
 }

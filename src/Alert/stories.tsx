@@ -1,12 +1,12 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import { Box } from '../Box';
-import { Alert } from '../Alert';
-import { GridRow, GridItem } from '../Grid';
-import { Icon } from '../Icon';
-import { Button } from '../Button';
+import { Box } from '../Box'
+import { Alert } from '../Alert'
+import { GridRow, GridItem } from '../Grid'
+import { Icon } from '../Icon'
+import { Button } from '../Button'
 
 storiesOf('Alerts', module).add('All', () => (
   <Box>
@@ -76,4 +76,4 @@ storiesOf('Alerts', module).add('All', () => (
       </Box>
     </Alert>
   </Box>
-));
+))

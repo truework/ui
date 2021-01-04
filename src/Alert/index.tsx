@@ -1,29 +1,23 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import {
-  compose,
-  variant,
-  space,
-  SpaceProps,
-  VariantArgs,
-} from 'styled-system';
+import * as React from 'react'
+import styled from 'styled-components'
+import { compose, variant, space, SpaceProps, VariantArgs } from 'styled-system'
 
-import { Icon } from '../Icon';
-import { theme } from '../theme';
+import { Icon } from '../Icon'
+import { theme } from '../theme'
 
 export type AlertTypes =
   | 'primary'
   | 'warning'
   | 'error'
   | 'success'
-  | 'secondary';
+  | 'secondary'
 
 export type AlertProps = {
-  appearance: 'primary' | 'secondary';
-  type: AlertTypes;
-  icon?: React.ReactElement;
+  appearance: 'primary' | 'secondary'
+  type: AlertTypes
+  icon?: React.ReactElement
 } & VariantArgs &
-  SpaceProps;
+  SpaceProps
 
 const AlertLeft = styled.div<SpaceProps>(
   {
@@ -31,12 +25,12 @@ const AlertLeft = styled.div<SpaceProps>(
     alignItems: 'center',
     justifyContent: 'center',
     background: 'body-alpha01',
-    minWidth: '52px',
+    minWidth: '52px'
   },
   space
-);
+)
 
-AlertLeft.displayName = 'AlertLeft';
+AlertLeft.displayName = 'AlertLeft'
 
 const AlertRight = styled.div<SpaceProps>(
   {
@@ -45,12 +39,12 @@ const AlertRight = styled.div<SpaceProps>(
     lineHeight: theme.lineHeights[1],
     letterSpacing: '0.3px',
     fontWeight: 400,
-    width: '100%',
+    width: '100%'
   },
   space
-);
+)
 
-AlertRight.displayName = 'AlertRight';
+AlertRight.displayName = 'AlertRight'
 
 const AlertOuter = styled.div<React.PropsWithChildren<AlertProps>>(
   {
@@ -64,19 +58,19 @@ const AlertOuter = styled.div<React.PropsWithChildren<AlertProps>>(
       color: 'inherit',
       '&:hover': {
         color: 'inherit',
-        textDecoration: 'underline',
-      },
-    },
+        textDecoration: 'underline'
+      }
+    }
   },
   compose(space),
   variant({
     prop: 'appearance',
     variants: {
       primary: {
-        border: '1px solid',
+        border: '1px solid'
       },
-      secondary: {},
-    },
+      secondary: {}
+    }
   }),
 
   variant({
@@ -86,69 +80,69 @@ const AlertOuter = styled.div<React.PropsWithChildren<AlertProps>>(
         borderColor: 'primary',
         [AlertLeft]: {
           bg: 'primary-alpha01',
-          color: 'primary',
+          color: 'primary'
         },
         [AlertRight]: {
-          color: 'body',
-        },
+          color: 'body'
+        }
       },
       secondary: {
         [AlertLeft]: {
           bg: 'placeholder-alpha01',
-          color: 'secondary',
+          color: 'secondary'
         },
         [AlertRight]: {
-          color: 'secondary',
-        },
+          color: 'secondary'
+        }
       },
       error: {
         borderColor: 'error',
         [AlertLeft]: {
           bg: 'error-alpha01',
-          color: 'error',
+          color: 'error'
         },
         [AlertRight]: {
-          color: 'error',
-        },
+          color: 'error'
+        }
       },
       warning: {
         borderColor: 'warning',
         [AlertLeft]: {
           bg: 'warning-alpha01',
-          color: 'warning',
+          color: 'warning'
         },
         [AlertRight]: {
-          color: 'warningDark',
-        },
+          color: 'warningDark'
+        }
       },
       success: {
         borderColor: 'success',
         [AlertLeft]: {
           bg: 'success-alpha01',
-          color: 'success',
+          color: 'success'
         },
         [AlertRight]: {
-          color: 'successDark',
-        },
-      },
-    },
+          color: 'successDark'
+        }
+      }
+    }
   })
-);
+)
 
-AlertOuter.displayName = 'AlertOuter';
+AlertOuter.displayName = 'AlertOuter'
 
 const icons: {
-  [key: string]: React.ReactElement;
+  [key: string]: React.ReactElement
 } = {
   primary: <Icon name='Info' />,
   secondary: <Icon name='Info' />,
   error: <Icon name='AlertCircle' />,
   warning: <Icon name='AlertTriangle' />,
-  success: <Icon name='CircleCheckFull' />,
-};
+  success: <Icon name='CircleCheckFull' />
+}
 
 export function Alert (props: React.PropsWithChildren<AlertProps>) {
-  let I = props.icon || icons[props.type];
+  let I = props.icon || icons[props.type]
 
   return (
     <AlertOuter {...props}>
@@ -157,5 +151,5 @@ export function Alert (props: React.PropsWithChildren<AlertProps>) {
         {props.children}
       </AlertRight>
     </AlertOuter>
-  );
+  )
 }

@@ -12,12 +12,12 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "test": "jest",
-    "format": "prettier-standard ./src/**/* --format",
+    "format": "prettier-standard ./src/**/*",
     "lint": "prettier-standard ./src/**/* --check"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier-standard --lint --staged",
+      "pre-commit": "npm run format && npm run lint",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },

@@ -1,17 +1,17 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { P, H1 } from '../Typography';
-import { Box } from '../Box';
-import { Gutter, GutterProps } from './';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
+import { P, H1 } from '../Typography'
+import { Box } from '../Box'
+import { Gutter, GutterProps } from './'
 
-const stories = storiesOf('Gutter', module);
+const stories = storiesOf('Gutter', module)
 
 function Demo ({
   label,
   ...options
 }: {
-  label: string;
+  label: string
 } & Partial<GutterProps>) {
   return (
     <Box mb='lg' border='2px dashed' borderColor='primary'>
@@ -25,7 +25,7 @@ function Demo ({
         </Box>
       </Gutter>
     </Box>
-  );
+  )
 }
 
 stories.add(
@@ -48,6 +48,6 @@ stories.add(
     </Box>
   ),
   {
-    info: { inline: true },
+    info: { inline: true }
   }
-);
+)

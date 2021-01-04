@@ -1,7 +1,7 @@
 # Grid
 
 ```js
-import { GridRow, GridItem } from '@truework/ui';
+import { GridRow, GridItem } from '@truework/ui'
 ```
 
 ## Usage

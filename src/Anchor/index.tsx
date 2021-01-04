@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const A = styled.a(
   ({ theme }) => `
@@ -9,4 +9,4 @@ export const A = styled.a(
       text-decoration: underline;
     }
   `
-);
+)

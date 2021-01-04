@@ -1,19 +1,19 @@
 /* eslint-disable */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import * as React from 'react'
+import { storiesOf } from '@storybook/react'
+import { ThemeProvider } from 'styled-components'
 
-import { theme } from '../theme';
-import { Icon } from '../Icon';
-import { Button } from '../Button';
-import { Box } from '../Box';
-import { H4, P } from '../Typography';
+import { theme } from '../theme'
+import { Icon } from '../Icon'
+import { Button } from '../Button'
+import { Box } from '../Box'
+import { H4, P } from '../Typography'
 
-const stories = storiesOf('Button', module);
+const stories = storiesOf('Button', module)
 
 stories
   .addDecorator((story: any) => {
-    return <ThemeProvider theme={theme}>{story()}</ThemeProvider>;
+    return <ThemeProvider theme={theme}>{story()}</ThemeProvider>
   })
   .add(
     'Base',
@@ -50,7 +50,7 @@ stories
       </div>
     ),
     {
-      info: { inline: true },
+      info: { inline: true }
     }
   )
   .add(
@@ -116,7 +116,7 @@ stories
       </div>
     ),
     {
-      info: { inline: true },
+      info: { inline: true }
     }
   )
   .add('Secondary', () => (
@@ -323,4 +323,4 @@ stories
         </Button>
       </Box>
     </div>
-  ));
+  ))

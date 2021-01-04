@@ -1,7 +1,7 @@
 # Icon
 
 ```js
-import { Icon } from '@truework/ui';
+import { Icon } from '@truework/ui'
 ```
 
 ## Usage
