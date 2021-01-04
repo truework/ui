@@ -1,14 +1,16 @@
-name: Lint & Test
+name: Release
 
 on:
-  pull_request:
+  push:
     branches:
-      - '**'
+      - master
+      - next
+      - beta
 
 jobs:
-  build:
-    name: CI
-    runs-on: ubuntu-latest
+  release:
+    name: CD
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -28,4 +30,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release -d
+        run: npx semantic-release
