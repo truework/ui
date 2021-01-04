@@ -59,6 +59,8 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^5.0.1",
     "@types/styled-system": "^5.1.1",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
     "commitizen": "^4.2.2",
     "core-js": "^3.0.0",
     "cz-conventional-changelog": "^3.3.0",
