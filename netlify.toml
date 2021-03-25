@@ -1,0 +1,10 @@
+[build]
+  base = "."
+  publish = "storybook-static/"
+  command = "npm run build:storybook"
+
+[[headers]]
+  for = "*"
+
+  [headers.values]
+    Basic-Auth = "truework:zethos1234"
