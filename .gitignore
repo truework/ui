@@ -3,6 +3,7 @@
 node_modules
 .cache
 dist
+.idea/
 
 .rts2_cache_cjs
 .rts2_cache_es
