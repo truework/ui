@@ -75,5 +75,23 @@ storiesOf('Alerts', module).add('All', () => (
         </Button>
       </Box>
     </Alert>
+
+    <Alert
+      appearance='primary'
+      type='image'
+      mb='sm'
+      icon={<Icon name='FileText' width='60px' height='50px' />}
+    >
+      <Box display='flex' alignItems='center' justifyContent='space-between'>
+        <p>
+          <b>Going out of office?</b>
+          <br />
+          Truework Teams lets you share verifications with your teammates.
+        </p>
+        <Button as='a' href='#' appearance='tertiary' size='small'>
+          Request Team Account
+        </Button>
+      </Box>
+    </Alert>
   </Box>
 ))

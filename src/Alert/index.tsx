@@ -11,6 +11,7 @@ export type AlertTypes =
   | 'error'
   | 'success'
   | 'secondary'
+  | 'image'
 
 export type AlertProps = {
   appearance: 'primary' | 'secondary'
@@ -123,6 +124,17 @@ const AlertOuter = styled.div<React.PropsWithChildren<AlertProps>>(
         },
         [AlertRight]: {
           color: 'successDark'
+        }
+      },
+      image: {
+        borderColor: 'primary',
+        display: 'flex',
+        alignItems: 'center',
+        [AlertLeft]: {
+          color: 'primary'
+        },
+        [AlertRight]: {
+          color: 'body'
         }
       }
     }
